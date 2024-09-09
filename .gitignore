@@ -1,0 +1,24 @@
+# STM32CubeIDE specific files
+*.launch
+*.settings/
+*.project
+*.cproject
+*.metadata/
+*.mxproject
+*.editorconfig
+
+# VSCode Files
+*.vscode/
+
+# Build artifacts
+/build/
+/Debug/
+/Release/
+
+# User-specific files
+*.user
+*.swp
+*.swo
+
+# Mac files
+.DS_Store
