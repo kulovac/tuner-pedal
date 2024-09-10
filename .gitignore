@@ -10,6 +10,9 @@
 # VSCode Files
 *.vscode/
 
+# Formatter
+.clang-format
+
 # Build artifacts
 /build/
 /Debug/
