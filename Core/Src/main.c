@@ -284,51 +284,51 @@ void get_note(float32_t freq, char *buf) {
 
     switch (closestNote % 12) {
     case 0:
-        sprintf(buf, "A + %f", cents);
+        sprintf(buf, "A + %f cts", cents);
         break;
     case -11:
     case 1:
-        sprintf(buf, "A# + %f", cents);
+        sprintf(buf, "A# + %f cts", cents);
         break;
     case -10:
     case 2:
-        sprintf(buf, "B + %f", cents);
+        sprintf(buf, "B + %f cts", cents);
         break;
     case -9:
     case 3:
-        sprintf(buf, "C + %f", cents);
+        sprintf(buf, "C + %f cts", cents);
         break;
     case -8:
     case 4:
-        sprintf(buf, "C# + %f", cents);
+        sprintf(buf, "C# + %f cts", cents);
         break;
     case -7:
     case 5:
-        sprintf(buf, "D + %f", cents);
+        sprintf(buf, "D + %f cts", cents);
         break;
     case -6:
     case 6:
-        sprintf(buf, "D# + %f", cents);
+        sprintf(buf, "D# + %f cts", cents);
         break;
     case -5:
     case 7:
-        sprintf(buf, "E + %f", cents);
+        sprintf(buf, "E + %f cts", cents);
         break;
     case -4:
     case 8:
-        sprintf(buf, "F + %f", cents);
+        sprintf(buf, "F + %f cts", cents);
         break;
     case -3:
     case 9:
-        sprintf(buf, "F# + %f", cents);
+        sprintf(buf, "F# + %f cts", cents);
         break;
     case -2:
     case 10:
-        sprintf(buf, "G + %f", cents);
+        sprintf(buf, "G + %f cts", cents);
         break;
     case -1:
     case 11:
-        sprintf(buf, "G# + %f", cents);
+        sprintf(buf, "G# + %f cts", cents);
         break;
     default:
         sprintf(buf, "shouldnt be here");
