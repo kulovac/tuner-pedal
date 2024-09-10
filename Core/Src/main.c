@@ -43,10 +43,12 @@
  * ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define FFT_BUFFER_SIZE 2048
-#define SAMPLE_RATE 2000.0f
+#define SAMPLE_RATE 2000.0f // Hz
 #define DECIMATION 16
 #define FIR_LEN 21
 #define BLOCK_SIZE 64
+#define A4 440.0f // Hz
+#define NOTE_RATIO 1.05946309436f
 /* USER CODE END PD */
 
 /* Private macro
@@ -267,6 +269,71 @@ float32_t get_zoom_freq(float32_t *zoomArr, float32_t f_0) {
 
     Actual = (0.987880793 +/- 7.3131E-05) * Calc - 0.00077 +/- 0.022973443
     */
+}
+
+/*
+ * Given a frequency `freq` the function will find the closest
+ * note and return the note as well as the cents off in `buf`.
+ *
+ * Ensure that `buf` is able to store the value.
+ */
+void get_note(float32_t freq, char *buf) {
+    float32_t noteExp = 12.0f * log2f(freq / A4);
+    int16_t closestNote = (int16_t)(roundf(noteExp));
+    float32_t cents = (noteExp - (float32_t)closestNote) * 100.0f;
+
+    switch (closestNote % 12) {
+    case 0:
+        sprintf(buf, "A + %f", cents);
+        break;
+    case -11:
+    case 1:
+        sprintf(buf, "A# + %f", cents);
+        break;
+    case -10:
+    case 2:
+        sprintf(buf, "B + %f", cents);
+        break;
+    case -9:
+    case 3:
+        sprintf(buf, "C + %f", cents);
+        break;
+    case -8:
+    case 4:
+        sprintf(buf, "C# + %f", cents);
+        break;
+    case -7:
+    case 5:
+        sprintf(buf, "D + %f", cents);
+        break;
+    case -6:
+    case 6:
+        sprintf(buf, "D# + %f", cents);
+        break;
+    case -5:
+    case 7:
+        sprintf(buf, "E + %f", cents);
+        break;
+    case -4:
+    case 8:
+        sprintf(buf, "F + %f", cents);
+        break;
+    case -3:
+    case 9:
+        sprintf(buf, "F# + %f", cents);
+        break;
+    case -2:
+    case 10:
+        sprintf(buf, "G + %f", cents);
+        break;
+    case -1:
+    case 11:
+        sprintf(buf, "G# + %f", cents);
+        break;
+    default:
+        sprintf(buf, "shouldnt be here");
+        break;
+    }
 }
 /* USER CODE END 0 */
 
@@ -549,6 +616,10 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc) {
 
     sprintf(output, "0.5) %f\r\n", zoomFreq);
     print(output);
+
+    get_note(zoomFreq, output);
+    print(output);
+    print("\r\n");
 }
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     float32_t f_0 = get_rfft_freq(&(inputArr[FFT_BUFFER_SIZE]));
@@ -564,6 +635,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 
     sprintf(output, "1) %f\r\n", zoomFreq);
     print(output);
+
+    get_note(zoomFreq, output);
+    print(output);
+    print("\r\n");
 }
 /* USER CODE END 4 */
 
