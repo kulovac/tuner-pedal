@@ -1,0 +1,6 @@
+# python files
+.venv
+*.py[cod]
+
+# MacOS files
+.DS_Store
