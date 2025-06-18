@@ -1,6 +1,16 @@
 # python files
 .venv
 *.py[cod]
+**/__pycache__/
 
 # MacOS files
 .DS_Store
+
+# KiCAD files
+*.kicad_prl
+*-backups/
+fp-info-cache
+fp-lib-table
+sym-lib-table
+\#auto_saved_files\#
+
