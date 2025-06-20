@@ -1,5 +1,4 @@
 (sym_lib_table
   (version 7)
   (lib (name "pcm1802")(type "KiCad")(uri "${KIPRJMOD}/components/symbols/pcm1802.kicad_sym")(options "")(descr ""))
-  (lib (name "abls-8.129mhz")(type "KiCad")(uri "${KIPRJMOD}/components/symbols/ABLS-8.192MHZ-B2-T.kicad_sym")(options "")(descr ""))
 )
