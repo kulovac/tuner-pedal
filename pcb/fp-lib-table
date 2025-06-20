@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "pcm1802")(type "KiCad")(uri "${KIPRJMOD}/components/footprints/pcm1802.pretty")(options "")(descr ""))
+  (lib (name "abls-8.192mhz")(type "KiCad")(uri "${KIPRJMOD}/components/footprints/abls-8.192mhz.pretty")(options "")(descr ""))
+)
