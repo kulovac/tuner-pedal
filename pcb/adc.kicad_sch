@@ -1470,35 +1470,6 @@
     )
   )
 
-  (symbol (lib_id "Device:C_Polarized_Small_US") (at 136.1694 65.8876 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 6b8afd43-e7f6-4006-8564-f36e1fa66ff9)
-    (property "Reference" "C1" (at 135.9662 62.5348 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "1uF" (at 136.0678 69.088 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 136.1694 65.8876 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 136.1694 65.8876 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 2a80c368-0e17-4651-8b19-8efa4ec2ca17))
-    (pin "2" (uuid 1534fa4b-e2dd-4e84-829b-25c50a6c9015))
-    (instances
-      (project "tuner_pedal"
-        (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C1") (unit 1)
-        )
-        (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/910ce163-1837-409b-9a8d-6a7a7eac3527"
-          (reference "C1") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 135.6614 109.6264 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 709effbb-9759-4af6-9a68-420647657538)
@@ -1572,6 +1543,35 @@
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/910ce163-1837-409b-9a8d-6a7a7eac3527"
           (reference "#PWR09") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C_Small") (at 136.1694 65.8876 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 7ca4d587-b27a-47cb-b348-c7763b76f4f7)
+    (property "Reference" "C10" (at 136.0424 62.3316 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "1uF" (at 136.525 69.5198 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 136.1694 65.8876 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 136.1694 65.8876 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 7dcf4ef2-81d3-4f04-8bd1-dbc491e70bc1))
+    (pin "2" (uuid 77fce34c-81c3-46b2-9c36-99f1f68d4e39))
+    (instances
+      (project "tuner_pedal"
+        (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
+          (reference "C10") (unit 1)
+        )
+        (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/910ce163-1837-409b-9a8d-6a7a7eac3527"
+          (reference "C1") (unit 1)
         )
       )
     )
