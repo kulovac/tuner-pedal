@@ -1021,11 +1021,11 @@
     (uuid d0b3f619-00f6-4b60-bdad-10ecaa186b70)
   )
 
-  (hierarchical_label "V_{OUT}" (shape input) (at 207.5434 58.3184 0) (fields_autoplaced)
+  (hierarchical_label "V_{OUT}" (shape output) (at 207.5434 58.3184 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 13337287-e45d-4bd8-af3c-f8e8f8812486)
   )
-  (hierarchical_label "Active Tuning" (shape input) (at 112.0648 109.7534 0) (fields_autoplaced)
+  (hierarchical_label "Active Tuning" (shape output) (at 112.0648 109.7534 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 5f649bd1-1307-4869-baee-111ebb49ba19)
   )
@@ -1425,10 +1425,10 @@
     (pin "2" (uuid 4cf1e6ae-71ab-4a1b-bd0d-6c4c3d33c04a))
     (pin "3" (uuid 0a9bbc6f-a064-4b5e-83fc-44a8f89cb4ad))
     (pin "4" (uuid c7d6ca65-f32d-4873-93cd-be7ed2c512c0))
-    (pin "7" (uuid f6c721b2-d66d-4928-b23c-c659e5ca7a2a))
     (pin "5" (uuid a412382c-d231-4819-9ba6-ab512638152c))
-    (pin "8" (uuid 6bf660d8-7594-4817-b2e0-1bdb9c90e665))
     (pin "6" (uuid cfc4dd51-dfb0-4d48-8f7e-d09e213dbd81))
+    (pin "7" (uuid f6c721b2-d66d-4928-b23c-c659e5ca7a2a))
+    (pin "8" (uuid 6bf660d8-7594-4817-b2e0-1bdb9c90e665))
     (pin "9" (uuid f94a001e-591f-4804-a6de-1bd8ed0471f6))
     (instances
       (project "tuner_pedal"

@@ -1991,7 +1991,7 @@
     (uuid ffd14730-ad0d-40f0-95e0-c91e21db0f49)
   )
 
-  (hierarchical_label "Active" (shape output) (at 40.1066 151.7142 180) (fields_autoplaced)
+  (hierarchical_label "Active" (shape input) (at 40.1066 151.7142 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 05cbd359-f1d4-4034-a088-cce439113234)
   )
