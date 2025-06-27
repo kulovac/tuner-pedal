@@ -1021,7 +1021,7 @@
   (symbol (lib_id "Device:R") (at 81.5086 88.8746 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 02c323e6-4dc6-4f6f-8d9d-b6a51f45be38)
-    (property "Reference" "R3" (at 82.931 87.4014 0)
+    (property "Reference" "R?" (at 82.931 87.4014 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "511k" (at 82.931 89.9414 0)
@@ -1038,10 +1038,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "R3") (unit 1)
+          (reference "R?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "R23") (unit 1)
+          (reference "R1") (unit 1)
         )
       )
     )
@@ -1050,7 +1050,7 @@
   (symbol (lib_id "Regulator_Switching:TPS54302") (at 100.5586 87.6046 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1526b93b-4246-4979-85bb-19b5b6641a42)
-    (property "Reference" "U4" (at 100.5586 77.089 0)
+    (property "Reference" "U?" (at 100.5586 77.089 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TPS54302" (at 100.5586 79.629 0)
@@ -1071,10 +1071,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "U4") (unit 1)
+          (reference "U?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "U5") (unit 1)
+          (reference "U1") (unit 1)
         )
       )
     )
@@ -1083,7 +1083,7 @@
   (symbol (lib_id "Device:R_Small") (at 154.0002 103.9114 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1842afaa-cac4-4b07-b0df-745e2f165345)
-    (property "Reference" "R7" (at 155.6258 102.9462 0)
+    (property "Reference" "R?" (at 155.6258 102.9462 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "13.3k" (at 155.5242 104.8766 0)
@@ -1100,10 +1100,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "R7") (unit 1)
+          (reference "R?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "R27") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
     )
@@ -1112,7 +1112,7 @@
   (symbol (lib_id "power:+5VA") (at 154.051 80.899 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1eb4cf5d-4930-437d-a6e7-823646fa7e4b)
-    (property "Reference" "#PWR020" (at 154.051 84.709 0)
+    (property "Reference" "#PWR?" (at 154.051 84.709 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5VA" (at 154.051 75.819 0)
@@ -1128,10 +1128,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR020") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR059") (unit 1)
+          (reference "#PWR07") (unit 1)
         )
       )
     )
@@ -1140,7 +1140,7 @@
   (symbol (lib_id "Device:R_Small") (at 154.0002 90.1446 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1ee0d833-bad3-494e-ad17-b57febb2e7c7)
-    (property "Reference" "R5" (at 155.6258 89.1794 0)
+    (property "Reference" "R?" (at 155.6258 89.1794 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "49.9" (at 155.5242 91.1098 0)
@@ -1157,10 +1157,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "R5") (unit 1)
+          (reference "R?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "R25") (unit 1)
+          (reference "R3") (unit 1)
         )
       )
     )
@@ -1169,7 +1169,7 @@
   (symbol (lib_id "power:GND") (at 67.1322 102.7938 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 326968e3-5d85-4bed-9427-975acd500400)
-    (property "Reference" "#PWR018" (at 67.1322 109.1438 0)
+    (property "Reference" "#PWR?" (at 67.1322 109.1438 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 67.1322 108.0262 0)
@@ -1185,10 +1185,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR02") (unit 1)
         )
       )
     )
@@ -1197,7 +1197,7 @@
   (symbol (lib_id "Device:C_Small") (at 236.1946 117.729 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 37adcb68-a68a-4b89-a408-45c51fe79379)
-    (property "Reference" "C19" (at 240.4618 116.713 0)
+    (property "Reference" "C?" (at 240.4618 116.713 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "0.1uF" (at 240.7158 118.6434 0)
@@ -1214,10 +1214,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C19") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C11") (unit 1)
+          (reference "C9") (unit 1)
         )
       )
     )
@@ -1226,7 +1226,7 @@
   (symbol (lib_id "power:PWR_FLAG") (at 153.8224 83.2866 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3a49ccb2-56c1-45c5-b203-ffae233b1afb)
-    (property "Reference" "#FLG02" (at 151.9174 83.2866 0)
+    (property "Reference" "#FLG01" (at 151.9174 83.2866 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "PWR_FLAG" (at 150.9776 83.2358 90)
@@ -1242,7 +1242,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#FLG02") (unit 1)
+          (reference "#FLG01") (unit 1)
         )
       )
     )
@@ -1251,7 +1251,7 @@
   (symbol (lib_id "power:GND") (at 81.5086 102.743 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3b5f141c-97f5-47e2-b831-1bf39882505f)
-    (property "Reference" "#PWR017" (at 81.5086 109.093 0)
+    (property "Reference" "#PWR?" (at 81.5086 109.093 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 81.5086 107.569 0)
@@ -1267,10 +1267,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -1279,7 +1279,7 @@
   (symbol (lib_id "Device:C_Small") (at 115.2398 85.0646 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3cd040bb-bf8b-4d28-a13c-873e899fb306)
-    (property "Reference" "C16" (at 115.2906 79.4258 90)
+    (property "Reference" "C?" (at 115.2906 79.4258 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "0.1uF" (at 115.4684 81.4832 90)
@@ -1296,10 +1296,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C16") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C33") (unit 1)
+          (reference "C3") (unit 1)
         )
       )
     )
@@ -1308,7 +1308,7 @@
   (symbol (lib_id "Device:C_Small") (at 72.263 87.7062 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 46dfd5ac-3551-4047-a7d3-a6f00349ab5f)
-    (property "Reference" "C15" (at 76.1238 88.9254 0)
+    (property "Reference" "C?" (at 76.1238 88.9254 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "0.1uF" (at 76.835 86.9442 0)
@@ -1325,10 +1325,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C15") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C32") (unit 1)
+          (reference "C2") (unit 1)
         )
       )
     )
@@ -1337,7 +1337,7 @@
   (symbol (lib_id "Device:R_Small") (at 154.0002 98.8314 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4981989f-d76a-42ea-a30e-90fed4108e72)
-    (property "Reference" "R6" (at 155.6258 97.8662 0)
+    (property "Reference" "R?" (at 155.6258 97.8662 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100k" (at 155.5242 99.7966 0)
@@ -1354,10 +1354,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "R6") (unit 1)
+          (reference "R?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "R26") (unit 1)
+          (reference "R4") (unit 1)
         )
       )
     )
@@ -1366,7 +1366,7 @@
   (symbol (lib_id "power:GND") (at 178.7906 118.745 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4e3389f9-39ab-4eb7-b295-2a739cf5c1f4)
-    (property "Reference" "#PWR064" (at 178.7906 125.095 0)
+    (property "Reference" "#PWR09" (at 178.7906 125.095 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 178.7906 123.1138 0)
@@ -1382,7 +1382,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR064") (unit 1)
+          (reference "#PWR09") (unit 1)
         )
       )
     )
@@ -1391,7 +1391,7 @@
   (symbol (lib_id "Device:R") (at 81.5086 98.933 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5063b3fc-169b-4e2b-a87a-c2ffad7b5784)
-    (property "Reference" "R4" (at 82.9818 97.7138 0)
+    (property "Reference" "R?" (at 82.9818 97.7138 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "105k" (at 82.9818 100.2538 0)
@@ -1408,10 +1408,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "R4") (unit 1)
+          (reference "R?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "R24") (unit 1)
+          (reference "R2") (unit 1)
         )
       )
     )
@@ -1420,7 +1420,7 @@
   (symbol (lib_id "power:+9VA") (at 208.661 110.0582 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 515e6b1b-6009-47c0-8550-30bbd6e8fefd)
-    (property "Reference" "#PWR067" (at 208.661 113.2332 0)
+    (property "Reference" "#PWR011" (at 208.661 113.2332 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+9VA" (at 208.2038 106.2482 0)
@@ -1436,7 +1436,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR067") (unit 1)
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -1445,7 +1445,7 @@
   (symbol (lib_id "Device:C") (at 220.3958 81.7626 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 54fc2414-b489-4645-840e-95333ea38fc4)
-    (property "Reference" "C13" (at 223.4438 80.4926 0)
+    (property "Reference" "C?" (at 223.4438 80.4926 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1uF" (at 223.4438 83.0326 0)
@@ -1462,10 +1462,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C13") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C38") (unit 1)
+          (reference "C8") (unit 1)
         )
       )
     )
@@ -1474,7 +1474,7 @@
   (symbol (lib_id "power:+BATT") (at 208.661 118.491 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5cdb80b7-4436-45ac-9fa6-6f21220bf489)
-    (property "Reference" "#PWR066" (at 212.471 118.491 0)
+    (property "Reference" "#PWR012" (at 212.471 118.491 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 205.867 116.6622 90)
@@ -1490,7 +1490,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR066") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -1499,7 +1499,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 183.8706 116.205 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 68f2d46c-055e-494a-bb9a-104647089430)
-    (property "Reference" "J5" (at 186.5122 116.205 0)
+    (property "Reference" "J1" (at 186.5122 116.205 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "9V Battery" (at 186.5122 118.745 0)
@@ -1516,7 +1516,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "J5") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
     )
@@ -1525,7 +1525,7 @@
   (symbol (lib_id "power:+9VA") (at 67.0814 80.6958 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7f305c53-b898-422d-8ce1-79df2ab460ed)
-    (property "Reference" "#PWR019" (at 67.0814 83.8708 0)
+    (property "Reference" "#PWR?" (at 67.0814 83.8708 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+9VA" (at 67.0814 75.819 0)
@@ -1541,10 +1541,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR053") (unit 1)
+          (reference "#PWR01") (unit 1)
         )
       )
     )
@@ -1553,7 +1553,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x03") (at 213.741 118.491 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 819e4e8d-241e-4942-8985-add65ddc9893)
-    (property "Reference" "J6" (at 216.9922 117.221 0)
+    (property "Reference" "J2" (at 216.9922 117.221 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "9V Barrel Female" (at 211.3026 110.9218 0)
@@ -1571,7 +1571,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "J6") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -1580,7 +1580,7 @@
   (symbol (lib_id "power:GND") (at 154.0002 106.4514 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8afb5a25-53a1-4aa4-90c9-838e7d61e563)
-    (property "Reference" "#PWR022" (at 154.0002 112.8014 0)
+    (property "Reference" "#PWR?" (at 154.0002 112.8014 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 154.0002 111.1758 0)
@@ -1596,10 +1596,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR022") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR058") (unit 1)
+          (reference "#PWR06") (unit 1)
         )
       )
     )
@@ -1608,7 +1608,7 @@
   (symbol (lib_id "power:+3.3V") (at 220.3958 70.1294 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 92ada1c6-8d2c-47b3-bf34-8c6353a39bb7)
-    (property "Reference" "#PWR012" (at 220.3958 73.9394 0)
+    (property "Reference" "#PWR?" (at 220.3958 73.9394 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 220.3958 65.1002 0)
@@ -1624,10 +1624,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR012") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR062") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -1636,7 +1636,7 @@
   (symbol (lib_id "power:+5VA") (at 198.247 70.6882 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 966b7a58-869e-43dd-8a1a-69b78dd5cb34)
-    (property "Reference" "#PWR011" (at 198.247 74.4982 0)
+    (property "Reference" "#PWR?" (at 198.247 74.4982 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5VA" (at 198.247 65.2526 0)
@@ -1652,10 +1652,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR011") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR060") (unit 1)
+          (reference "#PWR010") (unit 1)
         )
       )
     )
@@ -1664,7 +1664,7 @@
   (symbol (lib_id "Device:C_Small") (at 132.1054 90.1446 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 97298c90-d906-4a7c-8f26-beb0ca0dd7e0)
-    (property "Reference" "C17" (at 135.9662 91.3638 0)
+    (property "Reference" "C?" (at 135.9662 91.3638 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22uF" (at 136.6774 89.3826 0)
@@ -1681,10 +1681,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C17") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C34") (unit 1)
+          (reference "C4") (unit 1)
         )
       )
     )
@@ -1693,7 +1693,7 @@
   (symbol (lib_id "Device:C_Small") (at 67.1322 87.6554 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a417ca83-3d4b-4651-b966-c05d2fe7bd87)
-    (property "Reference" "C14" (at 62.7126 88.773 0)
+    (property "Reference" "C?" (at 62.7126 88.773 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10uF" (at 62.9158 86.487 0)
@@ -1710,10 +1710,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C14") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C31") (unit 1)
+          (reference "C1") (unit 1)
         )
       )
     )
@@ -1722,7 +1722,7 @@
   (symbol (lib_id "Regulator_Linear:MCP1700x-330xxTT") (at 209.0166 77.851 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ac48f4e1-555a-4aaa-a02c-c592b6d1cca0)
-    (property "Reference" "U3" (at 209.0166 71.1962 0)
+    (property "Reference" "U?" (at 209.0166 71.1962 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MCP1700T-3302E/TT" (at 209.0166 73.7362 0)
@@ -1740,10 +1740,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "U3") (unit 1)
+          (reference "U?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "U6") (unit 1)
+          (reference "U2") (unit 1)
         )
       )
     )
@@ -1752,7 +1752,7 @@
   (symbol (lib_id "power:GND") (at 100.5586 95.2246 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b6fec17b-d736-42be-a239-a6c9db6d82e3)
-    (property "Reference" "#PWR015" (at 100.5586 101.5746 0)
+    (property "Reference" "#PWR?" (at 100.5586 101.5746 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 100.5586 99.949 0)
@@ -1768,10 +1768,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR015") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR056") (unit 1)
+          (reference "#PWR04") (unit 1)
         )
       )
     )
@@ -1780,7 +1780,7 @@
   (symbol (lib_id "Device:L_Iron") (at 125.7554 87.6046 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b7aaa9f0-755a-483e-9cdd-21fdc5d12432)
-    (property "Reference" "L1" (at 125.7554 82.0674 90)
+    (property "Reference" "L?" (at 125.7554 82.0674 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10uH" (at 125.7554 83.8962 90)
@@ -1797,10 +1797,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "L1") (unit 1)
+          (reference "L?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "L2") (unit 1)
+          (reference "L1") (unit 1)
         )
       )
     )
@@ -1809,7 +1809,7 @@
   (symbol (lib_id "Device:C_Small") (at 150.241 98.8822 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b9b1e800-201e-4833-bd0e-139c795a44d6)
-    (property "Reference" "C19" (at 145.9738 99.8982 0)
+    (property "Reference" "C?" (at 145.9738 99.8982 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "75pF" (at 145.7198 97.9678 0)
@@ -1826,10 +1826,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C19") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C36") (unit 1)
+          (reference "C6") (unit 1)
         )
       )
     )
@@ -1838,7 +1838,7 @@
   (symbol (lib_id "power:GND") (at 236.1946 120.269 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bcba8f83-10b0-4b04-b822-070eda1e2198)
-    (property "Reference" "#PWR018" (at 236.1946 126.619 0)
+    (property "Reference" "#PWR017" (at 236.1946 126.619 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 236.1946 125.0442 0)
@@ -1854,7 +1854,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -1863,7 +1863,7 @@
   (symbol (lib_id "power:+9VA") (at 236.1946 115.189 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cfb6205a-d93f-4243-bf18-0b771f8de81c)
-    (property "Reference" "#PWR017" (at 236.1946 118.364 0)
+    (property "Reference" "#PWR016" (at 236.1946 118.364 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+9VA" (at 235.7374 111.379 0)
@@ -1879,7 +1879,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -1888,7 +1888,7 @@
   (symbol (lib_id "power:GND") (at 209.0166 86.3854 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d8878c23-1770-416b-9813-6a9a4b093469)
-    (property "Reference" "#PWR013" (at 209.0166 92.7354 0)
+    (property "Reference" "#PWR?" (at 209.0166 92.7354 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 209.0166 91.1606 0)
@@ -1904,10 +1904,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR013") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR061") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -1916,7 +1916,7 @@
   (symbol (lib_id "power:+BATT") (at 178.7906 116.205 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid db4a94ce-cd7c-4456-88d9-f06b979bce48)
-    (property "Reference" "#PWR063" (at 178.7906 120.015 0)
+    (property "Reference" "#PWR08" (at 178.7906 120.015 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 178.7906 110.9726 0)
@@ -1932,7 +1932,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR08") (unit 1)
         )
       )
     )
@@ -1941,7 +1941,7 @@
   (symbol (lib_id "Device:C") (at 198.247 81.7626 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e8c4c0cc-179c-4da7-ab9f-d9025252fae5)
-    (property "Reference" "C11" (at 191.3382 80.6958 0)
+    (property "Reference" "C?" (at 191.3382 80.6958 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1uF" (at 191.3382 83.2358 0)
@@ -1958,10 +1958,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C11") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C37") (unit 1)
+          (reference "C7") (unit 1)
         )
       )
     )
@@ -1970,7 +1970,7 @@
   (symbol (lib_id "power:GND") (at 208.661 121.031 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ee726a87-5200-476c-9b5e-255a04f022d2)
-    (property "Reference" "#PWR065" (at 208.661 127.381 0)
+    (property "Reference" "#PWR013" (at 208.661 127.381 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 208.661 125.8062 0)
@@ -1986,7 +1986,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR065") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -1995,7 +1995,7 @@
   (symbol (lib_id "power:PWR_FLAG") (at 208.661 111.4806 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f3a10418-a419-4c2b-8d12-26437a63b5a3)
-    (property "Reference" "#FLG01" (at 206.756 111.4806 0)
+    (property "Reference" "#FLG02" (at 206.756 111.4806 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "PWR_FLAG" (at 205.8162 111.4298 90)
@@ -2011,7 +2011,7 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#FLG01") (unit 1)
+          (reference "#FLG02") (unit 1)
         )
       )
     )
@@ -2045,7 +2045,7 @@
   (symbol (lib_id "Device:C_Small") (at 140.7414 90.1446 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fc1c9e9e-1b7b-4e56-881c-ae7f0fff22a1)
-    (property "Reference" "C18" (at 144.5006 91.313 0)
+    (property "Reference" "C?" (at 144.5006 91.313 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22uF" (at 145.2118 89.3318 0)
@@ -2062,10 +2062,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "C18") (unit 1)
+          (reference "C?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "C35") (unit 1)
+          (reference "C5") (unit 1)
         )
       )
     )
@@ -2074,7 +2074,7 @@
   (symbol (lib_id "power:GND") (at 140.7414 92.6846 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fc79264d-4b4a-4e4e-a21a-ee58d37d3c97)
-    (property "Reference" "#PWR021" (at 140.7414 99.0346 0)
+    (property "Reference" "#PWR?" (at 140.7414 99.0346 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 137.033 94.7674 0)
@@ -2090,10 +2090,10 @@
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR?") (unit 1)
         )
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
-          (reference "#PWR057") (unit 1)
+          (reference "#PWR05") (unit 1)
         )
       )
     )
