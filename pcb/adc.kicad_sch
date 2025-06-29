@@ -1437,7 +1437,7 @@
     (property "Footprint" "pcm1802:DB0020A-IPC_A" (at 40.9194 73.2028 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
-    (property "Datasheet" "PCM1802DB" (at 40.9194 73.2028 0)
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/pcm1802.pdf" (at 40.9194 73.2028 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
     (property "DNP" "" (at 40.9194 73.2028 0)
