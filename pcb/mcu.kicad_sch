@@ -2050,7 +2050,7 @@
     (property "Datasheet" "" (at 218.44 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 7c215454-57d0-45ab-a74e-903e189d88a6))
+    (pin "1" (uuid b9a25e33-8951-4fd6-85e4-6ef91f537a0e))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2090,8 +2090,8 @@
     (property "LCSC" "C98220" (at 215.9 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 4b9e6f1a-7e75-4c30-8d44-2b8ba48dbef5))
-    (pin "2" (uuid 3393d1b3-7eb1-43fb-b503-f14e00ac2ce0))
+    (pin "1" (uuid 6ddd9977-fa4b-42a4-802a-0259eaf11e80))
+    (pin "2" (uuid 3600144b-d0c6-4935-8536-ecc1c06dd071))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2119,7 +2119,7 @@
     (property "Datasheet" "" (at 50.8 106.68 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid ae288f18-6471-4a18-bc8c-45d3886c130a))
+    (pin "1" (uuid f6737833-7906-4615-85b1-80456f49967e))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2147,7 +2147,7 @@
     (property "Datasheet" "" (at 200.66 60.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 6c2e9a09-d4a3-4920-b1c8-35e3b3ddba7f))
+    (pin "1" (uuid 7704474d-0259-453f-b40a-4319c2b8760e))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2175,7 +2175,7 @@
     (property "Datasheet" "" (at 269.24 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 5f700953-508b-4279-b1df-72e260543490))
+    (pin "1" (uuid 719bb6c3-566e-4284-9302-ab6df5d7c4be))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -2200,7 +2200,7 @@
     (property "Datasheet" "" (at 193.04 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 6a4b85a8-f0c1-486e-a50e-97f1b497ff0c))
+    (pin "1" (uuid c84d33ff-71ee-4a35-9f6a-2a934f8fa4b6))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2228,7 +2228,7 @@
     (property "Datasheet" "" (at 238.76 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d4fe771f-67f2-4969-9f21-4a8e99c4b37f))
+    (pin "1" (uuid 2540616d-5f1e-4a27-bcb1-3804f35b10f5))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2262,16 +2262,16 @@
     (property "LCSC" "" (at 198.12 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid ed59a749-3c3c-4f02-a38c-28b48535a3be))
-    (pin "10" (uuid fa8c0162-2a19-4721-8d85-9d372bc818bb))
-    (pin "2" (uuid 336c2beb-01d0-4f15-a399-c67982768ac3))
-    (pin "3" (uuid 0a419be7-655c-45d3-b1ce-1708ecd8982d))
-    (pin "4" (uuid 8cd2249c-2860-42f2-9484-0af345f4930b))
-    (pin "5" (uuid aee2831e-0153-4163-9c04-2d06c0892d80))
-    (pin "6" (uuid 2d8f2f86-8317-47e4-b4fe-3d52a5fbba20))
-    (pin "7" (uuid 99463441-1ae1-4aae-bb3c-5fc4d0fe239d))
-    (pin "8" (uuid 513b4979-f226-4fd7-ad53-9f71736b42d4))
-    (pin "9" (uuid 742426db-4230-403c-8630-70c1324c13a5))
+    (pin "1" (uuid a8b4d2bf-bb06-4f70-8f46-c1560917211b))
+    (pin "10" (uuid 4377c231-672d-4862-9df2-59dba1d83f24))
+    (pin "2" (uuid 99be41a0-88cf-4e20-9865-b832c9b93468))
+    (pin "3" (uuid 5118b63b-ae7b-4044-9213-abb00b471419))
+    (pin "4" (uuid 515849fc-b149-44cd-8d20-a4e18a8c79df))
+    (pin "5" (uuid 07ae4c4b-8fc7-474c-83cf-166607fa27d7))
+    (pin "6" (uuid be27d2cc-6de1-4552-8df1-1e346d1cb078))
+    (pin "7" (uuid c42591a6-a878-4411-8fa1-2e94ccb22cfb))
+    (pin "8" (uuid 8b0547ee-8e68-4b63-9b85-557b1366f7ef))
+    (pin "9" (uuid 6e0788ab-1eb6-4151-96bf-101ca1545160))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2311,8 +2311,8 @@
     (property "LCSC" "C108661" (at 254 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 23f1cea4-edd2-4612-b311-397e98900be0))
-    (pin "2" (uuid c581ae1b-2b15-4ef4-b010-c1557d9e4c28))
+    (pin "1" (uuid a1256d3d-7cb7-4285-87f9-5e56aad3707d))
+    (pin "2" (uuid d92b7b72-877b-4c2d-a552-20186ae1856f))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2352,8 +2352,8 @@
     (property "LCSC" "C98220" (at 50.8 157.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 847a3606-4563-4414-86f7-e177f49030f9))
-    (pin "2" (uuid 63fa8ecd-48cc-488c-84f7-34f31846ad19))
+    (pin "1" (uuid 4266a4b1-6313-46c7-a45c-ab9902c99ee7))
+    (pin "2" (uuid 38fe994b-a14d-48cd-9e48-abc74480a121))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -2378,7 +2378,7 @@
     (property "Datasheet" "" (at 162.56 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 13851308-5198-419f-8f3d-8714aaefe3b0))
+    (pin "1" (uuid c68d6686-5d42-45bc-90aa-df2aad4b84d5))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2418,10 +2418,10 @@
     (property "Manufacturer" "Suzhou Liming Elec" (at 114.3 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 9068a51f-3948-44fb-be63-afe853f192b8))
-    (pin "2" (uuid f16ddfd2-d16b-42f4-a51b-cfd0d85ecf02))
-    (pin "3" (uuid 1c1cf374-6662-4da5-a9e9-0971bebc5abd))
-    (pin "4" (uuid e7ebdf9a-98fd-4450-ab06-b800b145173a))
+    (pin "1" (uuid 3b1e19fd-448b-4fd3-a33f-58be3da3c54d))
+    (pin "2" (uuid dd071513-b874-4846-8efc-0b5186720ed7))
+    (pin "3" (uuid b09397f7-ffc6-4def-b6c7-8fac0c9f1217))
+    (pin "4" (uuid bb56ec23-97c8-4b15-ab76-5ae8e873d3bc))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2461,8 +2461,8 @@
     (property "Manufacturer" "Samsung Electro-Mechanics" (at 104.14 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 095b4670-82eb-4761-97fd-e9d29b8bb3e7))
-    (pin "2" (uuid b5e25544-b54f-4a8c-b30c-090bd2f46736))
+    (pin "1" (uuid c2093fa6-65cb-4c99-b098-220b7b47f1fd))
+    (pin "2" (uuid 917989e7-f0e6-4779-b5f3-26d9681a00de))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2502,8 +2502,8 @@
     (property "LCSC" "C108661" (at 254 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid ced16ab8-83dd-490f-9137-73c82e0d8f6f))
-    (pin "2" (uuid 9f5ab77b-a6be-474f-a55c-ed22e5dbe734))
+    (pin "1" (uuid dbed4c8b-6c9c-487c-9964-05b30bab3af8))
+    (pin "2" (uuid 19ed0d5e-6435-40a6-9488-29737c960110))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2531,7 +2531,7 @@
     (property "Datasheet" "" (at 190.5 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid ddeb99c4-197d-4bcf-b8b7-08f91ab64955))
+    (pin "1" (uuid e9f86828-e90a-4b42-a856-460183698390))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2571,8 +2571,8 @@
     (property "LCSC" "C98220" (at 187.96 139.7 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d81896cc-a2a7-4fd9-ac2b-7d97f53fa18e))
-    (pin "2" (uuid 6090a027-bf77-4476-a005-b40ce2fbac92))
+    (pin "1" (uuid be3923d8-d6da-4323-b4b4-0c5f00f1962f))
+    (pin "2" (uuid 4a8e9fea-9079-4f11-afa5-987738b1a225))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2612,8 +2612,8 @@
     (property "LCSC" "C98220" (at 266.7 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 088d377c-79ed-4f55-8ad5-9514dbc873b0))
-    (pin "2" (uuid 9d8bf859-63ef-45a6-8ff0-7eedd6e3764a))
+    (pin "1" (uuid 6bf3f946-9a28-4455-b5bd-778c0afa52c4))
+    (pin "2" (uuid 59cde3cb-f0f5-47d0-9691-85195e70f718))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2641,7 +2641,7 @@
     (property "Datasheet" "" (at 104.14 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 6c34581a-8009-47d0-acc7-f2d9176b01f3))
+    (pin "1" (uuid 06061a5c-b04a-4db4-a008-e8c7c5c379d6))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -2666,7 +2666,7 @@
     (property "Datasheet" "" (at 246.38 38.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 073d8f22-04b0-49cb-acf0-ff4d8e4e885e))
+    (pin "1" (uuid a62f9bc9-1607-4a31-be08-005c026079f8))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2685,7 +2685,7 @@
     (property "Reference" "SW?" (at 170.688 65.3288 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SW_Push" (at 170.688 67.8688 0)
+    (property "Value" "NRST" (at 170.688 67.8688 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" (at 165.1 66.04 0)
@@ -2706,8 +2706,8 @@
     (property "Manufacturer" "E-Switch" (at 165.1 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 34964ac3-b54e-4f1e-bb38-2d16a87ea357))
-    (pin "2" (uuid 23b87f15-8d53-42fd-aaa6-1fd92858840c))
+    (pin "1" (uuid 65554752-9ea9-4ba5-a565-5aa3c6e7a59b))
+    (pin "2" (uuid 8de1e6c8-068f-405c-ba6c-ccb3c0781800))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2747,8 +2747,8 @@
     (property "LCSC" "C98220" (at 266.7 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 970ffcd2-5b7d-4ed5-9d80-8784aa2741a0))
-    (pin "2" (uuid dd486f95-e4bc-4d97-939b-fd57bdc518f9))
+    (pin "1" (uuid d094c838-aaca-420e-92f1-f0e6fa8adbb4))
+    (pin "2" (uuid 956305d5-bfa6-4502-ab6a-99e8f12adcb4))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2764,10 +2764,10 @@
   (symbol (lib_id "Switch:SW_Push") (at 200.66 66.04 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 36cb2d9a-a653-48f5-bd36-dcfbf62f26e1)
-    (property "Reference" "SW?" (at 194.3608 65.532 90)
+    (property "Reference" "SW?" (at 194.2084 61.7728 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SW_Push" (at 194.3608 62.992 90)
+    (property "Value" "BOOT0" (at 194.4116 64.516 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" (at 195.58 66.04 0)
@@ -2788,8 +2788,8 @@
     (property "Manufacturer" "E-Switch" (at 200.66 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 028d36fa-a3ef-45d1-88f4-4a20cbd6dc2b))
-    (pin "2" (uuid 8dca05df-89fc-49c9-9124-61c9cc528112))
+    (pin "1" (uuid 3c341963-4d01-4fde-91f2-eaec55027384))
+    (pin "2" (uuid ee5bf64d-75df-4c6b-942c-78df901e9501))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2829,8 +2829,8 @@
     (property "LCSC" "C108661" (at 254 139.7 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f8406f92-fdac-4af1-916c-3f040ec2eb56))
-    (pin "2" (uuid 18a452e4-f83c-48e8-924e-63c2bebf949c))
+    (pin "1" (uuid 212d75fb-c892-42a2-9bb1-1c63f80e5469))
+    (pin "2" (uuid 64fb65cc-c36e-4bd9-a2c7-bfae0a768dcb))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2870,8 +2870,8 @@
     (property "Manufacturer" "Yageo" (at 172.72 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 8966a853-6db9-45c3-a731-542e36e0dda5))
-    (pin "2" (uuid 73baa53d-8ed4-4931-8514-efcc433d4193))
+    (pin "1" (uuid 87e7aad9-3544-437e-a3f0-b4d9ec2a5b9b))
+    (pin "2" (uuid 8025e321-16a3-4fb2-9c53-c89faac90112))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2899,7 +2899,7 @@
     (property "Datasheet" "" (at 193.04 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 82bc1d4b-bcc0-44ae-b084-e4c8169ceec9))
+    (pin "1" (uuid 3fcb0e23-6a89-460d-a716-ab9ce0e41505))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2927,7 +2927,7 @@
     (property "Datasheet" "" (at 101.6 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 9d43625f-ebb4-4c6e-bc8f-f50b3cee83d3))
+    (pin "1" (uuid b6f530df-11a3-4acc-ad7a-f2fb50e52a27))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2955,7 +2955,7 @@
     (property "Datasheet" "" (at 218.44 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 502b4bfa-39cd-4d13-bba4-3ce349cd39fb))
+    (pin "1" (uuid 75b3049e-fa44-4f44-b38d-79c477dc441c))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2995,8 +2995,8 @@
     (property "LCSC" "C108661" (at 101.6 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 743308cc-de62-41d7-be3a-97fa99de07c9))
-    (pin "2" (uuid 8dad5b5e-955c-4bb0-9631-7cf8060eb5ee))
+    (pin "1" (uuid bcbfa2fc-c4fd-4b84-9734-d699e8edeef2))
+    (pin "2" (uuid 7be7bcdf-daf8-4882-a98e-3bac8a90e16c))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -3021,7 +3021,7 @@
     (property "Datasheet" "" (at 127 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 20e0dde5-1b1e-4158-b956-78fb8f44b6a4))
+    (pin "1" (uuid ca635f16-5d23-47d2-8e38-56471c36a4f4))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3061,8 +3061,8 @@
     (property "Manufacturer" "Yageo" (at 198.12 35.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid b6b8d745-08a6-42bb-86a9-7e9af6aa7eae))
-    (pin "2" (uuid c61b7327-4f83-4994-8f5c-601c1dfd7aad))
+    (pin "1" (uuid cf8d9ced-0240-441c-a4f5-22345d9decbd))
+    (pin "2" (uuid 6dc675ea-98b0-4cd7-8299-201cfdc39af4))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3078,7 +3078,7 @@
   (symbol (lib_id "Device:R_Small") (at 160.02 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4ab8a5ee-3013-443f-97ff-2a47fc754cef)
-    (property "Reference" "R?" (at 155.6004 64.6684 0)
+    (property "Reference" "R?" (at 154.686 64.6176 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 154.8384 66.9036 0)
@@ -3102,8 +3102,8 @@
     (property "LCSC" "C98220" (at 160.02 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2c9f1a0e-ae70-4bc1-aa64-9239f05e8764))
-    (pin "2" (uuid cbfebcbc-03d6-42f8-b7a6-23f30d74053a))
+    (pin "1" (uuid ffc001c4-dbce-4607-85b4-501da0739f2f))
+    (pin "2" (uuid 665792f1-7c43-45a5-ad6b-708c887e625f))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3131,7 +3131,7 @@
     (property "Datasheet" "" (at 246.38 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 4af0e86f-e489-4035-86da-243013cc2670))
+    (pin "1" (uuid 3dd251bf-310c-4a22-9b86-8ff8f078d563))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3171,8 +3171,8 @@
     (property "Manufacturer" "Samsung Electro-Mechanics" (at 208.28 35.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d7aae63e-8b10-4bb7-97e1-6b1956488c22))
-    (pin "2" (uuid fcf137c0-c56c-4725-b8b4-ef9f86a7bc76))
+    (pin "1" (uuid 0de54d35-7ef1-4cda-b8f5-f70483581c74))
+    (pin "2" (uuid d09bf561-8635-472e-95f2-d514edb4e583))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3212,8 +3212,8 @@
     (property "LCSC" "C107696" (at 114.3 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 55ef2cfc-dcb6-4771-b524-a5abc0baf04d))
-    (pin "2" (uuid 54f9dd04-7b4d-4fa0-91fd-2d1ad581c4a3))
+    (pin "1" (uuid cfbafe92-dd7d-46df-834f-125825897de6))
+    (pin "2" (uuid a632ff81-e8f7-42e4-8854-a9f2c90fb3a1))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3241,7 +3241,7 @@
     (property "Datasheet" "" (at 50.8 160.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f974ebd8-ca7b-4b88-b5d6-1287a2e756a6))
+    (pin "1" (uuid 49501707-5840-433b-851a-56b9175f98de))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -3266,7 +3266,7 @@
     (property "Datasheet" "" (at 30.48 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 59f08a04-d6d2-48c9-a874-222d6561da27))
+    (pin "1" (uuid ce4986f4-1788-4469-ad52-2e8715f9c847))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3300,9 +3300,9 @@
     (property "LCSC" "" (at 251.46 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2773aa2b-cfc6-49e3-81b6-afc3e38f20c0))
-    (pin "2" (uuid ccb5e0cd-52d0-406b-835c-624d73d0d193))
-    (pin "3" (uuid d831eeee-56b7-429b-8d8a-97abab5e80c2))
+    (pin "1" (uuid 1aa4bb14-43a4-4bf3-a2ea-b28f5d01c741))
+    (pin "2" (uuid dbb4d38c-b8fb-444c-9b41-6ad14aafee5d))
+    (pin "3" (uuid 9dec057d-2831-4c7b-80fd-83ae0b10cc60))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3342,8 +3342,8 @@
     (property "Manufacturer" "Yageo" (at 162.56 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f54a444f-43e1-482b-a53d-071a25d7b331))
-    (pin "2" (uuid 261b06b3-019d-42ee-996b-a9417f9b62ee))
+    (pin "1" (uuid b1f62af7-9e1a-41c5-ba95-6fa47bfa36b7))
+    (pin "2" (uuid a070cbf9-83b0-49af-a8f7-9d4442da6178))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3371,7 +3371,7 @@
     (property "Datasheet" "" (at 220.98 139.7 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid cfb2d638-61ab-40d0-8154-6f5a9b897067))
+    (pin "1" (uuid 2c67354d-4b89-43cc-b109-7067c2accc3b))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3399,7 +3399,7 @@
     (property "Datasheet" "" (at 160.02 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 01683468-c491-4ec6-bf0a-218364c7f942))
+    (pin "1" (uuid c490e00a-7546-454d-8e67-47b5ce41fb0a))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3427,7 +3427,7 @@
     (property "Datasheet" "" (at 109.22 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 429b1967-a537-4a0f-a9f6-88fc41968261))
+    (pin "1" (uuid 3fa37bfa-6388-43d1-80df-b13ef567f96b))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -3464,8 +3464,8 @@
     (property "LCSC" "C108661" (at 254 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 61bfe951-79cf-46c7-9c98-4f6ca8decce2))
-    (pin "2" (uuid 0deb21de-9c03-4d44-bd8e-4fae6ba21e7b))
+    (pin "1" (uuid 124ca2c7-a5a5-42f8-86b8-8fe1fe7195e2))
+    (pin "2" (uuid a9372bec-c27e-418f-994d-04d05d44162f))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3505,8 +3505,8 @@
     (property "Manufacturer" "Yageo" (at 205.74 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 97e02c8d-ec04-44b6-a61d-8232ee6d25c0))
-    (pin "2" (uuid b2083319-8044-4b8d-b284-12682fb25e7e))
+    (pin "1" (uuid 18267c65-5067-4475-ab8b-c8c1a2d6e9be))
+    (pin "2" (uuid adcb7d81-3420-4228-9712-057cd3ec9f6a))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3534,7 +3534,7 @@
     (property "Datasheet" "" (at 162.56 35.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid b3178e4e-82b0-4737-b8b9-cce5ec8d5555))
+    (pin "1" (uuid 3275a701-628d-4dd0-9882-b0a9639d3f4e))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3574,8 +3574,8 @@
     (property "LCSC" "C98220" (at 187.96 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d0453322-005a-4a8e-b184-153362744be7))
-    (pin "2" (uuid 6664d838-221a-45bf-9761-d6a09b213c4c))
+    (pin "1" (uuid 507f0e92-7167-490c-a93f-ea67cf0d414d))
+    (pin "2" (uuid 6e42523b-290f-4e07-9143-4b5a3ff17356))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3615,8 +3615,8 @@
     (property "Manufacturer" "onsemi" (at 137.16 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 72634df7-6dbe-48f4-ab95-7a5d401fe051))
-    (pin "2" (uuid 359d2307-60d4-4b75-8688-f5beb186ad62))
+    (pin "1" (uuid 7f01292b-5089-4fd4-a5de-fc72e5e45641))
+    (pin "2" (uuid ef182bb6-cb62-4a38-95af-791c5f7fc059))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -3641,7 +3641,7 @@
     (property "Datasheet" "" (at 137.16 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid bf1cdbf8-c445-4750-a908-d9260df40d08))
+    (pin "1" (uuid c57a312c-b70c-4c19-ad0d-b00f4240f425))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -3678,8 +3678,8 @@
     (property "Manufacturer" "Samsung Electro-Mechanics" (at 104.14 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 6a380dde-86b2-4780-9e0e-12990f512260))
-    (pin "2" (uuid 45945845-9523-43a9-93d7-95b6a91c897d))
+    (pin "1" (uuid d2f35a4b-fa51-4218-bbd7-8be1d45e350c))
+    (pin "2" (uuid 3cba65f6-df8c-46fc-9988-392d9858f745))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3707,7 +3707,7 @@
     (property "Datasheet" "" (at 190.5 139.7 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 8eceaa2b-1aa5-45c7-ab05-2082577a31c3))
+    (pin "1" (uuid b6059b9e-0185-43b4-bbe3-4114c28bc7e1))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3741,12 +3741,12 @@
     (property "LCSC" "" (at 248.92 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid a142e2a9-8c60-40cc-be12-b110bed22b91))
-    (pin "2" (uuid de138c0c-bf75-408d-ab95-b4f508ef1372))
-    (pin "3" (uuid 6f332d84-5fa9-4342-8e3c-6b7d3ca9e4ed))
-    (pin "4" (uuid eab7d42b-b5d0-4a13-87b3-455fde571cdf))
-    (pin "5" (uuid 9450577c-e30d-4c1b-995a-8c73300a5fd0))
-    (pin "6" (uuid 80b80108-bf3c-4332-ac26-b086fd05f5fa))
+    (pin "1" (uuid db489b2e-8842-44e3-ae8b-20691abe81cc))
+    (pin "2" (uuid 6be7b0c9-5369-474f-99b5-9271d8ea3284))
+    (pin "3" (uuid 441cef02-b94a-468f-8b5e-028cb026f3d2))
+    (pin "4" (uuid ccf1f4fd-7fa8-4ed9-8951-0c7da629ce6a))
+    (pin "5" (uuid 83bb32b6-7f6a-4e97-88e2-82dcc4c2ae0e))
+    (pin "6" (uuid 6aba8fff-68b4-4b65-a53f-b3dcfcb6fd15))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -3783,8 +3783,8 @@
     (property "Manufacturer" "Yageo" (at 165.1 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 9aa1e32b-e851-445a-99b0-4fbc6c93a427))
-    (pin "2" (uuid 66503a3c-f7a0-4f9f-8886-7ff1b8d5bb91))
+    (pin "1" (uuid d550dd19-bcfc-4335-a423-76c5b4d85cf5))
+    (pin "2" (uuid d3ce912a-f957-43ed-a185-4c85c841e7fe))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3812,7 +3812,7 @@
     (property "Datasheet" "" (at 208.28 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 5c6883fa-8ca0-4c39-a305-a05c54c5fc53))
+    (pin "1" (uuid 486c8e3e-9c30-433a-818a-05a5089e96b6))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3840,7 +3840,7 @@
     (property "Datasheet" "" (at 210.82 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 963fa559-2bd9-45e8-9016-2974ac9e9716))
+    (pin "1" (uuid a11f5c42-5018-4fcc-a3ff-e97c33d2dc27))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3880,8 +3880,8 @@
     (property "LCSC" "C108661" (at 254 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 8b9027c4-0714-422f-a9bd-5da3a9311a4d))
-    (pin "2" (uuid b08ed81c-822c-4c07-a96f-846a27284abd))
+    (pin "1" (uuid 4c44354a-57ff-4f8b-bb37-ee87ca9ceb4a))
+    (pin "2" (uuid 3e26d800-f2c6-49bb-89fc-a38c3febefc8))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3909,7 +3909,7 @@
     (property "Datasheet" "" (at 203.2 38.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2a087fd5-9d32-41fc-ab96-c4cfd24eb973))
+    (pin "1" (uuid a20e63b1-3eb9-413e-b166-63fca4a73507))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3949,8 +3949,8 @@
     (property "LCSC" "C98220" (at 218.44 139.7 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 953d9332-df6e-4ee5-a916-8e69e5bf0a65))
-    (pin "2" (uuid 9d3d8461-e218-4595-81d7-19e35681d01c))
+    (pin "1" (uuid 01f9b72b-2a1c-4914-a806-5e3db9215b50))
+    (pin "2" (uuid 05b4da20-0fcb-4d34-a496-f6153078ff93))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -3990,8 +3990,8 @@
     (property "LCSC" "C98220" (at 205.74 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 782a1ca8-4976-4454-843a-e87f61758e46))
-    (pin "2" (uuid 20df6527-aa72-4dc3-8163-f032c307f925))
+    (pin "1" (uuid 18383b31-f95a-458a-806e-e8ad0e3e3bb1))
+    (pin "2" (uuid 17cb63c7-efc5-4370-b146-147ba37f2e6f))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4031,8 +4031,8 @@
     (property "LCSC" "C98220" (at 187.96 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 62af8801-7bbc-4699-9d1c-e88b66f2e1fd))
-    (pin "2" (uuid d02e18c0-579a-42ea-8b4d-feb1dfe40d51))
+    (pin "1" (uuid 493eabe5-075a-4bc1-80c4-d63a7ef0067b))
+    (pin "2" (uuid 15b570fc-962c-4bf5-b575-8ec102ef22ce))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4060,7 +4060,7 @@
     (property "Datasheet" "" (at 109.22 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 01f1af7d-dafe-475f-9cda-ce48ab828408))
+    (pin "1" (uuid 2b376b53-8bc1-4457-9fba-dad65a636b59))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -4085,7 +4085,7 @@
     (property "Datasheet" "" (at 190.5 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid bf9bec5d-8566-46b0-a8ab-61c1b8a8a678))
+    (pin "1" (uuid ee7d71e0-aee7-47f8-8b55-cff0b0327bb1))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4119,9 +4119,9 @@
     (property "LCSC" "" (at 124.46 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c5fd5123-09ab-48e3-baf9-1c1205ba4689))
-    (pin "2" (uuid 9a244985-1608-49a3-b624-16d6c8b430bf))
-    (pin "3" (uuid 0aa037c7-eda2-46ab-868a-e2ceb8aa12dd))
+    (pin "1" (uuid 3b3c50b9-be20-4628-8948-9e1e0acd2184))
+    (pin "2" (uuid f23d9842-3539-40e1-8138-b994d2754c10))
+    (pin "3" (uuid 88bab516-3202-46b3-b7e5-14e1a3a81077))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4149,7 +4149,7 @@
     (property "Datasheet" "" (at 238.76 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 98cc3c9a-f7c1-409a-9cca-5b28b5682cd2))
+    (pin "1" (uuid bc77137a-751e-4da9-97cd-022395ae419d))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4177,7 +4177,7 @@
     (property "Datasheet" "" (at 119.38 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 15fe20a2-e279-42d6-b7b6-7a263bb37617))
+    (pin "1" (uuid de046ae0-1ced-4424-b4a9-b4e1b036dfe3))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4217,8 +4217,8 @@
     (property "LCSC" "C98220" (at 215.9 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 7d0edd09-92d3-4b5d-863b-5cc69ece403d))
-    (pin "2" (uuid a41ef008-e01e-4023-8881-c01a06bed49a))
+    (pin "1" (uuid 37ca0390-05e9-4f74-a918-a91569d10884))
+    (pin "2" (uuid 899fc710-eb57-4eca-81f5-a26440e3c61a))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4246,7 +4246,7 @@
     (property "Datasheet" "" (at 119.38 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d6a6443a-a262-45f1-b3c9-2adfde87998d))
+    (pin "1" (uuid 63a8464c-5e16-4311-bb8a-81cf2a34f863))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -4271,7 +4271,7 @@
     (property "Datasheet" "" (at 198.12 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 884c3762-e531-4ffb-afea-73b8490651c4))
+    (pin "1" (uuid efcd1e97-fdc3-4c28-9d0d-c9d6d1302c09))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4299,7 +4299,7 @@
     (property "Datasheet" "" (at 269.24 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 54d88400-50f7-46ce-bb54-9cd4c9ef849a))
+    (pin "1" (uuid a14ee9bb-9729-4f27-881a-afd9797fa536))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4339,8 +4339,8 @@
     (property "Manufacturer" "Samsung Electro-Mechanics" (at 33.02 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid cba67c9c-1244-42c5-9a95-d4130fab1c66))
-    (pin "2" (uuid 0556dfa6-ee89-44c0-b5cf-915a69d9d0a2))
+    (pin "1" (uuid 17cd4846-9c8b-411d-b301-87c1ba444835))
+    (pin "2" (uuid 6c408df9-5fb3-40e6-98b5-90ec3077ce16))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4380,8 +4380,8 @@
     (property "Manufacturer" "Yageo" (at 152.4 33.02 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c1e98232-d685-4a06-b78a-1f3f88f804c6))
-    (pin "2" (uuid 4e7cdd9c-21cd-4d9b-9bde-4ffbc1227c17))
+    (pin "1" (uuid e46768b4-5e4e-475c-83fe-d5b4f8d92816))
+    (pin "2" (uuid 26f37c7f-59a1-437f-8bd6-f92186d29644))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4421,8 +4421,8 @@
     (property "Manufacturer" "onsemi" (at 104.14 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 930d0da7-69b3-4674-bf40-9e8cef77e6c5))
-    (pin "2" (uuid 680f6440-27c0-467b-9d16-86816596e672))
+    (pin "1" (uuid 03818eda-4857-42f0-9033-fa01a461ff78))
+    (pin "2" (uuid 3fb3e1c6-acce-4995-ac86-620ac08e7160))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -4447,7 +4447,7 @@
     (property "Datasheet" "" (at 101.6 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 6bce6628-a3c3-4fcc-bd78-ae13e599523f))
+    (pin "1" (uuid 43bedd3e-b8e8-4195-8069-63efe0ae81be))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4475,7 +4475,7 @@
     (property "Datasheet" "~" (at 208.28 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 744f7fe8-da42-467f-a0de-240ec7f9f8a2))
+    (pin "1" (uuid fc041e2b-f583-4090-9858-fab2e2a7ac8a))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/9ea77ce1-53e9-4640-bd59-4fc38cd754df"
@@ -4515,8 +4515,8 @@
     (property "Manufacturer" "Hubei KENTO Elec" (at 120.65 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 36f37b03-0101-4d6e-86c8-c26ff7e6319b))
-    (pin "2" (uuid 831640ae-1a60-4f95-939d-c42f88ffecae))
+    (pin "1" (uuid 67830ee2-48f0-4e44-a030-218ba787b223))
+    (pin "2" (uuid f7b7d71a-1be0-485e-9c33-40871278110e))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4556,8 +4556,8 @@
     (property "LCSC" "C98220" (at 109.22 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2d90b341-e0d5-4e1b-b273-5133d13d9c83))
-    (pin "2" (uuid 08f7004f-1b8c-4e40-b5c6-42a4657fab29))
+    (pin "1" (uuid 3a542670-9ca2-431c-9dd8-5291407e9aba))
+    (pin "2" (uuid 46a0a1ce-b606-46af-86ef-d2acfd7dfc56))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -4594,8 +4594,8 @@
     (property "LCSC" "C108661" (at 134.62 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid cdaacd29-374c-4b00-8487-256c8936bbc8))
-    (pin "2" (uuid f2f758f2-29b4-4fd1-b431-0eed2eed58ca))
+    (pin "1" (uuid 2e9d95ca-658c-48ad-9576-39ffd73c0ebd))
+    (pin "2" (uuid 458b9cec-0680-4f60-acbd-ce7976c1adba))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf/23f7357b-d90b-4d34-9d76-13515b2796f4"
@@ -4620,7 +4620,7 @@
     (property "Datasheet" "" (at 170.18 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 9f6b3aeb-403e-43e0-9cbd-7e1ac41abce6))
+    (pin "1" (uuid 3329b126-1e37-4dbf-b13e-94943cac5b1c))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4660,8 +4660,8 @@
     (property "LCSC" "C88999" (at 198.12 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid c7f43a4e-ef83-4165-8152-ed5d4a385fa0))
-    (pin "2" (uuid 7995194e-cad1-4103-8075-992e8f4fcefe))
+    (pin "1" (uuid 65ccb7d1-0dea-4d14-8857-db8b7c17869f))
+    (pin "2" (uuid ca0b4272-54f4-4f7f-a546-f6b14aa36cb6))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4701,8 +4701,8 @@
     (property "LCSC" "C108661" (at 254 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid d67c06d8-8826-492d-a6fc-876d29baa6f5))
-    (pin "2" (uuid e3852be8-3470-42eb-a6ab-3fd62502d23b))
+    (pin "1" (uuid a82ffe55-9b86-4b50-8882-9f5340857b5a))
+    (pin "2" (uuid e2285a2c-1427-4d09-984e-112cc45d7a21))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -4742,55 +4742,55 @@
     (property "Manufacturer" "STMicroelectronics" (at 50.8 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid fad6cafe-ece7-4176-b82e-eaab6e6e69d1))
-    (pin "10" (uuid 4456c618-22b8-4f40-94c4-f4449e4fef50))
-    (pin "11" (uuid ca353579-432e-445b-8c71-fec2c4a59b10))
-    (pin "12" (uuid 335cbb1c-c0f8-430d-9715-f12e3c4bdbfc))
-    (pin "13" (uuid ca1db137-95f1-4364-9e44-11ff34403c0c))
-    (pin "14" (uuid fdf78ca0-c9a8-40eb-82e7-5516dadb91d1))
-    (pin "15" (uuid 7b86b46e-ccdf-402b-b8b7-4afc57532423))
-    (pin "16" (uuid e0dffed6-f978-4c6e-94f9-b05bb70f797a))
-    (pin "17" (uuid 9497d4f0-3725-46fe-81e9-1b71ed1b30a0))
-    (pin "18" (uuid 7534dff4-7bd1-4213-b5d3-1e121a962d9d))
-    (pin "19" (uuid 4fbbe95a-876e-43f7-aae6-db1bab29b358))
-    (pin "2" (uuid b5b7535a-1efe-474f-b321-39f3fba493e6))
-    (pin "20" (uuid e9e06246-7c24-4346-b772-2df2a98efe52))
-    (pin "21" (uuid 130ed273-9144-43d4-aeff-31979bede387))
-    (pin "22" (uuid 471431bc-8906-49f3-a900-31e4310649c4))
-    (pin "23" (uuid 39454b1a-92e6-4a67-bcb5-936747e2cdf9))
-    (pin "24" (uuid 9c91f0ae-1d87-4d4b-bbe2-130b5536cde1))
-    (pin "25" (uuid 3ec805cc-e5ec-487f-8d1f-1968bcd769a9))
-    (pin "26" (uuid 04bc5d02-bb0a-40a8-bf03-f126ea462b58))
-    (pin "27" (uuid 78aa315d-4346-47a6-9e90-9c8b26e6cf62))
-    (pin "28" (uuid c8222fc5-aca7-4bb9-98fb-698c830f77f1))
-    (pin "29" (uuid 8853c53b-d006-4cb0-a9d8-2beae126e7d2))
-    (pin "3" (uuid 05e0ebbe-5b60-49ce-8fa7-e4963c5f125b))
-    (pin "30" (uuid 332f5ca2-bf01-45d8-850a-a86846b2a5b3))
-    (pin "31" (uuid 73a224eb-c4dc-479c-bdb1-f19d4be2f9e5))
-    (pin "32" (uuid 07386dae-2f5c-4cb2-830f-329621931a2c))
-    (pin "33" (uuid e377d6d8-b6bd-4afa-b49b-1a0b9f68a4cd))
-    (pin "34" (uuid 2fa1df35-b3ea-4948-901c-80d1bef1796e))
-    (pin "35" (uuid 63bff8af-4074-4287-8d31-92145409ea99))
-    (pin "36" (uuid 07fdd658-ac5b-4342-bd5b-88108755649f))
-    (pin "37" (uuid cc30c897-8bb9-4c49-8454-311960fa1ba2))
-    (pin "38" (uuid a242d9a2-cc03-4cbf-bb10-b6b32d0f8a32))
-    (pin "39" (uuid 7babda10-a3d6-4faa-be74-ad788b05bfc5))
-    (pin "4" (uuid c0cbb569-33fb-4841-9b6f-fb4e01dd490b))
-    (pin "40" (uuid 055d7f41-caa2-4ff0-b12c-c603e4d29983))
-    (pin "41" (uuid 2cffdade-a155-4d3c-a31c-20dd346dfd6b))
-    (pin "42" (uuid de9764b1-1f5f-4311-91a0-0598e208aa60))
-    (pin "43" (uuid d87ac7bf-d093-40e0-8878-8cb2abcaf261))
-    (pin "44" (uuid b70f4389-6d5c-40bd-adaa-223e7b114fa6))
-    (pin "45" (uuid d17b78f7-d80e-4c96-8934-f1b07ad3affc))
-    (pin "46" (uuid 547f6656-9132-4d8b-b8d1-868a62153eb1))
-    (pin "47" (uuid 9c09110b-38a6-436c-aac0-8b8b616b91c2))
-    (pin "48" (uuid b5b2b78f-b75b-4a98-b6c1-543f9ad0bf38))
-    (pin "49" (uuid d1df1cc0-364e-4afd-b1ae-644e30a99acc))
-    (pin "5" (uuid 4bceba0c-9b3d-4262-bc03-38d6f58f75ed))
-    (pin "6" (uuid bd23a374-08ae-4725-b8a4-c5638bf19046))
-    (pin "7" (uuid 09d66cd8-985e-4844-a5cc-a967d183eafa))
-    (pin "8" (uuid 511f8c7c-23b3-4524-bf9d-837f326516ee))
-    (pin "9" (uuid d85bc334-b76b-464e-9654-1271ad1f61e2))
+    (pin "1" (uuid 1f9b3486-b7bc-4f06-9061-f5a909251448))
+    (pin "10" (uuid dbd450c7-6f2e-401f-95a6-d70b8e24da1f))
+    (pin "11" (uuid 13fd3593-ab6a-48d7-8e77-ccae842ac3e2))
+    (pin "12" (uuid a67f36e2-f591-40d3-a3ce-0cf30fca51fb))
+    (pin "13" (uuid 8838fe43-8597-4729-bac7-a5e4711feb1f))
+    (pin "14" (uuid bb27329d-29ca-44fd-84fe-1ee7f2206907))
+    (pin "15" (uuid 16e2ef4e-103e-49dc-8be7-069a07cc23d0))
+    (pin "16" (uuid b9d6ec05-5f73-401f-afcc-4303f8fee786))
+    (pin "17" (uuid c1d6ec20-9073-4fb1-ad01-c01fabe87f40))
+    (pin "18" (uuid e43a1bed-a0a0-4a71-b6d6-eb7054156e0a))
+    (pin "19" (uuid 62dda84a-433a-4f16-978e-7b230bdc6116))
+    (pin "2" (uuid 648c73a9-4a6e-40c5-823d-b93b0c2eb413))
+    (pin "20" (uuid b2efbab4-f573-40ad-baa1-a8dd6ee6488f))
+    (pin "21" (uuid 87ab81fa-e5ff-436e-9e89-efe19ae926b9))
+    (pin "22" (uuid bce18268-6c81-434c-a890-73570e3dd507))
+    (pin "23" (uuid bcc7e47a-bd3d-43c8-b988-162631b25453))
+    (pin "24" (uuid 3c6fdfb3-5f6f-4a0c-b892-bd657552f3c0))
+    (pin "25" (uuid deee7b8d-7ce5-4185-acb2-01abaf33efd5))
+    (pin "26" (uuid acdc5668-b861-4f47-a91b-4965810e6808))
+    (pin "27" (uuid 3de17ae9-d5a8-4e38-9010-3ae2a1227203))
+    (pin "28" (uuid a2a0db37-c9d7-414e-b007-b150004024fe))
+    (pin "29" (uuid 74c87f88-4b17-465c-ac45-2cd2c7be3c7b))
+    (pin "3" (uuid 95ecd935-6bb4-4ec6-b183-426f2fd03abd))
+    (pin "30" (uuid b2160080-e8c5-4a6b-b304-10dc9316bfea))
+    (pin "31" (uuid f5cea585-67ac-4a28-b472-8984717bdbcd))
+    (pin "32" (uuid ed57c29a-4299-4621-b078-e460be4dc233))
+    (pin "33" (uuid 7de8ba98-e684-41d3-9df7-cbd7d95f61e0))
+    (pin "34" (uuid 24635cfb-1d2c-415c-ae23-40a9f50f7ade))
+    (pin "35" (uuid 3d6a335d-d0d8-4d06-b0a7-01d3ccc5ca32))
+    (pin "36" (uuid eee60c20-1646-4ed0-8f40-50d16b1801fe))
+    (pin "37" (uuid 4adbe61c-a3b7-447c-9707-fb2a7f5b6c7a))
+    (pin "38" (uuid 1852cbb6-6866-4a30-900f-d1367f3822c0))
+    (pin "39" (uuid 5d80eb8f-3a61-4c04-b013-9b05fb12e82a))
+    (pin "4" (uuid 753e6046-b8c5-45b1-bd8c-babf59482e0d))
+    (pin "40" (uuid 470997c9-235d-456d-9f9c-f7dd2dabc0e7))
+    (pin "41" (uuid 0c16bb88-01ed-4b9d-9102-6a4f5a696bd4))
+    (pin "42" (uuid 93b9f5d9-c563-4661-85bb-abe835558292))
+    (pin "43" (uuid 3e9ff3e2-bcfb-4199-b334-43ae81858732))
+    (pin "44" (uuid fce15d2c-9cb3-4987-947f-164d23277d00))
+    (pin "45" (uuid e194741d-16b6-4b33-9bb3-e1368ba495b4))
+    (pin "46" (uuid cd3d9c73-6efa-4cfc-92c4-e67b125f36f6))
+    (pin "47" (uuid 4cb689e3-2164-46d9-a41f-afa06cf12e30))
+    (pin "48" (uuid 0fcb8ea1-8b33-4441-b95c-428f3aa59510))
+    (pin "49" (uuid ba324982-05a6-4223-b4f8-ce2946418e52))
+    (pin "5" (uuid 857230f2-2425-4089-b263-58bc3517efb7))
+    (pin "6" (uuid bf3c2ef9-28fd-414f-93b5-58cd680240b7))
+    (pin "7" (uuid 3edd5b62-74fc-4e19-bfa9-96f3f4f945a6))
+    (pin "8" (uuid f9383323-cc98-4b01-8f99-008ebe628187))
+    (pin "9" (uuid b2a0e75e-673f-4afa-bc77-73aee368590b))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
