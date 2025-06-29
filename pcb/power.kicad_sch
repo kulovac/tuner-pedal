@@ -1951,7 +1951,7 @@
     (property "Datasheet" "" (at 198.12 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 07ca6569-26ea-41d3-838a-3d58ebce5713))
+    (pin "1" (uuid 9718f2eb-4f18-47f5-a144-35fb344b44ce))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2044,7 +2044,7 @@
   )
 
   (symbol (lib_id "Regulator_Linear:MCP1700x-330xxTT") (at 208.28 78.74 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid ac48f4e1-555a-4aaa-a02c-c592b6d1cca0)
     (property "Reference" "U?" (at 208.28 72.0852 0)
       (effects (font (size 1.27 1.27)))
@@ -2070,9 +2070,9 @@
     (property "Manufacturer" "Microchip" (at 208.28 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2c172663-1f4c-4732-95fc-53ee808cab1b))
-    (pin "2" (uuid 308f41ba-891c-4787-95e7-2fce920e86d9))
-    (pin "3" (uuid c5cccba5-ba5a-48c3-91e9-7b2b23dba2cf))
+    (pin "1" (uuid 45fe896c-5aaf-4206-8ce5-7019afde57be))
+    (pin "2" (uuid 870091c8-5b7d-4acb-bab3-6fb3696d69a9))
+    (pin "3" (uuid 2ba52712-719e-4530-aef7-4f8de7c2c232))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
@@ -2360,8 +2360,8 @@
     (property "Manufacturer" "Samsung Electro-Mechanics" (at 198.12 82.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid ac7b2ff0-5898-454b-b3d9-afac7225c06e))
-    (pin "2" (uuid 30476fce-5fc2-4b5b-a044-c7c820336e40))
+    (pin "1" (uuid 9446573c-c91d-4329-a408-d228931172c9))
+    (pin "2" (uuid 5d806156-0410-4bc1-a59d-1d8870e5d229))
     (instances
       (project "tuner_pedal"
         (path "/be09f3cc-c79c-49de-93a4-4a01bf6bfbcf"
