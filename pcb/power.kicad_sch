@@ -1104,6 +1104,14 @@
     (uuid b34df2cf-5fd4-46a6-ba1d-e65e9952f148)
   )
 
+  (netclass_flag "" (length 2.54) (shape round) (at 121.666 86.36 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid cc9b2533-a279-4918-9be6-6ea2471324f2)
+    (property "Netclass" "Power" (at 119.888 80.772 90)
+      (effects (font (size 1.27 1.27) italic) (justify right))
+    )
+  )
+
   (symbol (lib_id "Device:R") (at 81.28 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 02c323e6-4dc6-4f6f-8d9d-b6a51f45be38)

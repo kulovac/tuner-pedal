@@ -1071,6 +1071,14 @@
     (uuid 5f649bd1-1307-4869-baee-111ebb49ba19)
   )
 
+  (netclass_flag "" (length 2.54) (shape round) (at 162.56 124.46 90)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid a552a985-0c95-4379-888d-c103389fdb8b)
+    (property "Netclass" "Power" (at 156.972 126.238 0)
+      (effects (font (size 1.27 1.27) italic) (justify left))
+    )
+  )
+
   (symbol (lib_id "power:+9VA") (at 167.64 116.84 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0262eb8a-cd53-4e21-abd1-70338453daeb)
