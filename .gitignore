@@ -1,14 +1,16 @@
 # python files
 .venv
 *.py[cod]
-**/__pycache__/
+__pycache__
+
 
 # MacOS files
 .DS_Store
 
+
 # KiCAD files
 
-# Temporary files
+## Temporary files
 *.000
 *.bak
 *.bck
@@ -26,14 +28,79 @@ fp-info-cache
 ~*.lck
 \#auto_saved_files\#
 
-# Netlist files (exported from Eeschema)
+## Netlist files (exported from Eeschema)
 *.net
 
-# Autorouter files (exported from Pcbnew)
+## Autorouter files (exported from Pcbnew)
 *.dsn
 *.ses
 
-# Exported BOM files
+## Exported BOM files
 *.xml
 *.csv
 
+
+# STM32CubeIDE generated files
+.metadata
+.settings
+Debug
+Release
+
+
+# General C files
+
+## Prerequisites
+*.d
+
+## Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+## Linker output
+*.ilk
+*.map
+*.exp
+
+## Precompiled Headers
+*.gch
+*.pch
+
+## Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+## Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+## Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+## Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+## Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+## debug information files
+*.dwo
