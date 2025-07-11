@@ -2,12 +2,27 @@
 #define __st7735s_compat_h__
 
 #include <inttypes.h>
+#include "stm32f4xx_hal.h"
 
 /* this may differ from the default 80x160 */
 #define defWIDTH   160
 #define defHEIGHT  80
 #define defXSTART  1
 #define defYSTART  26
+
+// GPIO pins
+#define ST_RESET_Pin       GPIO_PIN_6
+#define ST_RESET_GPIO_Port GPIOA
+
+#define ST_DC_Pin          GPIO_PIN_0
+#define ST_DC_GPIO_Port    GPIOB
+
+#define ST_CS_Pin          GPIO_PIN_1
+#define ST_CS_GPIO_Port    GPIOB
+
+// External handles
+extern SPI_HandleTypeDef hspi2;
+extern TIM_HandleTypeDef htim2;
 
 /* #define BUFFER */
 /* #define BUFFER1 */

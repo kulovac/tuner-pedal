@@ -1,12 +1,12 @@
 #include "st7735s_compat.h"
-#include "spi.h"
-#include "tim.h"
+#include "stm32f4xx_ll_spi.h"
+#include "stm32f4xx_hal_tim.h"
 
 uint32_t tim_period = 32768;
 uint32_t tim_pulse;
 
 
-#include "stm32f3xx_ll_gpio.h"
+#include "stm32f4xx_ll_gpio.h"
 #ifndef _Pin_Init
 #define _Pin_Init(name) LL_GPIO_SetPinMode(name ## _GPIO_Port, name ## _Pin, LL_GPIO_MODE_OUTPUT)
 #define _Pin_Toggle(name) LL_GPIO_TogglePin(name ## _GPIO_Port, name ## _Pin)
@@ -45,16 +45,16 @@ extern uint8_t backlight_pct;
 void Pin_BLK_Pct(uint8_t pct) {
     backlight_pct = pct;
     tim_pulse = pct*tim_period/100;
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, tim_pulse);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, tim_pulse);
 }
 
 void SPI_send(uint16_t len, uint8_t *data) {
-	Pin_CS_low();
+	Pin_CS_Low();
 #if 0
 	while (len--)
 		HAL_SPI_Transmit(&hspi3, data++, 1, 0xF000);
 #else
-	HAL_SPI_Transmit(&hspi3, data, len, 0xF000);
+	HAL_SPI_Transmit(&hspi2, data, len, 0xF000);
 	Pin_CS_High();
 #endif
 }
