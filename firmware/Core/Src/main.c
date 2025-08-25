@@ -21,6 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+#include <stdio.h>
+#include "log.h"
 
 /* USER CODE END Includes */
 
@@ -52,7 +55,7 @@ TIM_HandleTypeDef htim2;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-
+uint8_t isBufferFull = 0; 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,6 +73,59 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
+void intArrayToString(const int32_t arr[], size_t len, char *buffer,
+                      size_t buffer_size) {
+  if (len == 0) {
+    buffer[0] = '\0'; // Empty string for an empty array
+    return;
+  }
+
+  size_t current_pos = 0;
+  int chars_written;
+// ((int32_t)((i2s_data[52] << 16) + i2s_data[53])) / 256
+  for (size_t i = 0; i < len; ++i) {
+    // Use snprintf to safely write integer to buffer
+    // It returns the number of characters that *would* have been written
+    // if buffer_size was large enough, excluding null terminator.
+    // %#X
+    chars_written = snprintf(buffer + current_pos, buffer_size - current_pos,
+                             "%ld", arr[i]);
+
+    // Check if snprintf failed or if the buffer is full
+    if (chars_written < 0 ||
+        (size_t)chars_written >= (buffer_size - current_pos)) {
+      // Handle buffer overflow or error by truncating the string
+      buffer[current_pos] = '\0';
+      return;
+    }
+    current_pos += chars_written;
+
+    // Add comma and space if not the last element
+    if (i < len - 1) {
+      if (current_pos + 2 < buffer_size) { // Check space for ", "
+        strcat(buffer + current_pos, ", ");
+        current_pos += 2;
+      } else {
+        buffer[current_pos] = '\0'; // Truncate if no space for separator
+        return;
+      }
+    }
+  }
+}
+
+
+void RxCpltCallback(I2S_HandleTypeDef *hi2s) {
+  LOG_TRACE("callback!!");
+  isBufferFull = 1U;
+}
+
+void ConvertI2S(uint32_t *buf, size_t len) {
+  for (size_t i = 0; i < len; ++i) {
+    buf[i] = (buf[i] >> 24) | ((int32_t)(buf[i] << 16) >> 8);
+  }
+}
 
 /* USER CODE END 0 */
 
@@ -110,6 +166,26 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET); // Set high
+
+  uint32_t audio_buffer[4096] = {0};  
+
+  logger_init(&huart1);
+
+  if (HAL_I2S_RegisterCallback(&hi2s1, HAL_I2S_RX_COMPLETE_CB_ID, RxCpltCallback) == HAL_OK) {
+    LOG_DEBUG("Registered callback");
+  } else {
+    LOG_ERROR("Failed to register callback");
+    Error_Handler();
+  };
+  
+  if (HAL_I2S_Receive_DMA(&hi2s1, (uint16_t*)audio_buffer, 4096) == HAL_OK) {
+    LOG_DEBUG("Setup I2S DMA");
+  } else {
+    LOG_ERROR("Failed to setup I2S DMA");
+    Error_Handler();
+  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,6 +195,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    if (!isBufferFull) continue;
+    isBufferFull = 0U;
+
+    ConvertI2S(audio_buffer + 2048, 2048);
+    
+    char arr[4096];
+    intArrayToString((int32_t*)(audio_buffer + 2048), 20, arr, 4096);
+
+    LOG_TRACE("%s", arr);
   }
   /* USER CODE END 3 */
 }
@@ -465,6 +550,8 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
+
+  LOG_ERROR("Something went wrong...");
   while (1)
   {
   }
