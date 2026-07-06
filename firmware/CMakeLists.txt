@@ -39,12 +39,13 @@ set (MFLOAT_ABI_MIX                   "-mfloat-abi=softfp")
 set (PROJECT_NAME             "firmware2")
 set (PROJECT_TYPE             "exe")
 set (LINKER_SCRIPT            "../STM32F411CEUX_FLASH.ld")
-set (MCPU                     "-mcpu=Cortex-M4")
+set (MCPU                     "-mcpu=cortex-m4") # Fixed capitalization just in case
 set (MFPU                 "-mfpu=fpv4-sp-d16")
-set (MFLOAT_ABI               "")
+set (MFLOAT_ABI               "-mfloat-abi=hard") # Set to hard since F411 has an FPU
 set (RUNTIME_LIBRARY          "--specs=nano.specs")
 set (RUNTIME_LIBRARY_SYSCALLS "--specs=nosys.specs")
 
+project(${PROJECT_NAME} C ASM)
 
 set (PROJECT_SOURCES
 	# LIST SOURCE FILES HERE
@@ -58,22 +59,65 @@ set (PROJECT_SOURCES
 
 set (PROJECT_DEFINES
 	# LIST COMPILER DEFINITIONS HERE
-
+	STM32F411xE
+	USE_FULL_LL_DRIVER
     )
 
 set (PROJECT_INCLUDES
 	# LIST INCLUDE DIRECTORIES HERE
-
+	Sources
+	Inc
     )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS)
+
 ############ MODIFY ACCORDING TO REQUIREMENTS) ########################
+
+include(FetchContent)
+
+FetchContent_Declare(
+    cmsis_core
+    GIT_REPOSITORY https://github.com/STMicroelectronics/cmsis_core.git
+    GIT_TAG        v5.6.0
+)
+
+FetchContent_Declare(
+    cmsis_device_f4
+    GIT_REPOSITORY https://github.com/STMicroelectronics/cmsis_device_f4.git
+    GIT_TAG        v2.6.3
+)
+
+FetchContent_Declare(
+    stm32f4_drivers
+    GIT_REPOSITORY https://github.com/STMicroelectronics/stm32f4xx-hal-driver.git
+    GIT_TAG        v1.8.2
+)
+
+FetchContent_MakeAvailable(cmsis_core cmsis_device_f4 stm32f4_drivers)
+
+set(LL_SOURCES 
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_adc.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_dma.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_dma2d.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_exti.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_gpio.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_spi.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_tim.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_usart.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_utils.c"
+)
+
+list(APPEND PROJECT_SOURCES ${LL_SOURCES})
+
+list(APPEND PROJECT_INCLUDES 
+    ${cmsis_core_SOURCE_DIR}/Include
+    ${cmsis_device_f4_SOURCE_DIR}/Include
+    ${stm32f4_drivers_SOURCE_DIR}/Inc
+)
 
 #######################################################################
 
 ################## PROJECT SETUP ######################################
-project(${PROJECT_NAME})
-enable_language(ASM)
-
 if (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_EXECUTABLE})
   add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
   add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
