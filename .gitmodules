@@ -1,0 +1,10 @@
+[submodule "firmware/libs/stm32f4xx-hal-driver"]
+	path = firmware/libs/stm32f4xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32f4xx-hal-driver.git
+[submodule "firmware/libs/cmsis-device-f4"]
+	path = firmware/libs/cmsis-device-f4
+	url = https://github.com/STMicroelectronics/cmsis-device-f4.git
+[submodule "firmware/libs/cm4"]
+	path = firmware/libs/cm4
+	url = https://github.com/STMicroelectronics/cmsis-core.git
+	branch = cm4
