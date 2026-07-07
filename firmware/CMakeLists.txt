@@ -50,9 +50,9 @@ project(${PROJECT_NAME} C ASM)
 set (PROJECT_SOURCES
 	# LIST SOURCE FILES HERE
 	Startup/startup_stm32f411ceux.s
-	Sources/main.c
-	Sources/syscalls.c
-	Sources/sysmem.c
+	src/main.c
+	src/syscalls.c
+	src/sysmem.c
 
 
 	)
@@ -65,8 +65,8 @@ set (PROJECT_DEFINES
 
 set (PROJECT_INCLUDES
 	# LIST INCLUDE DIRECTORIES HERE
-	Sources
-	Inc
+	src
+	inc
     )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS)
