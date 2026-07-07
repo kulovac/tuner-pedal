@@ -49,7 +49,7 @@ project(${PROJECT_NAME} C ASM)
 
 set (PROJECT_SOURCES
 	# LIST SOURCE FILES HERE
-	Startup/startup_stm32f411ceux.s
+	startup/startup_stm32f411ceux.s
 	src/main.c
 	src/syscalls.c
 	src/sysmem.c
