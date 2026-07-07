@@ -36,7 +36,7 @@ set (MFLOAT_ABI_MIX                   "-mfloat-abi=softfp")
 #######################################################################
 
 ###################### VARIABLES ######################################
-set (PROJECT_NAME             "firmware2")
+set (PROJECT_NAME             "firmware")
 set (PROJECT_TYPE             "exe")
 set (LINKER_SCRIPT            "../STM32F411CEUX_FLASH.ld")
 set (MCPU                     "-mcpu=cortex-m4") # Fixed capitalization just in case
@@ -69,31 +69,19 @@ set (PROJECT_INCLUDES
 	inc
     )
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ############ MODIFY ACCORDING TO REQUIREMENTS) ########################
 
-include(FetchContent)
-
-FetchContent_Declare(
-    cmsis_core
-    GIT_REPOSITORY https://github.com/STMicroelectronics/cmsis_core.git
-    GIT_TAG        v5.6.0
+set(stm32f4_drivers_SOURCE_DIR 
+	"${CMAKE_CURRENT_SOURCE_DIR}/libs/stm32f4xx-hal-driver"
 )
-
-FetchContent_Declare(
-    cmsis_device_f4
-    GIT_REPOSITORY https://github.com/STMicroelectronics/cmsis_device_f4.git
-    GIT_TAG        v2.6.3
+set(cmsis_device_f4_SOURCE_DIR 
+	"${CMAKE_CURRENT_SOURCE_DIR}/libs/cmsis-device-f4"
 )
-
-FetchContent_Declare(
-    stm32f4_drivers
-    GIT_REPOSITORY https://github.com/STMicroelectronics/stm32f4xx-hal-driver.git
-    GIT_TAG        v1.8.2
+set(cmsis_core_SOURCE_DIR 
+	"${CMAKE_CURRENT_SOURCE_DIR}/libs/cm4"
 )
-
-FetchContent_MakeAvailable(cmsis_core cmsis_device_f4 stm32f4_drivers)
 
 set(LL_SOURCES 
 	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_adc.c"
@@ -110,9 +98,9 @@ set(LL_SOURCES
 list(APPEND PROJECT_SOURCES ${LL_SOURCES})
 
 list(APPEND PROJECT_INCLUDES 
-    ${cmsis_core_SOURCE_DIR}/Include
-    ${cmsis_device_f4_SOURCE_DIR}/Include
     ${stm32f4_drivers_SOURCE_DIR}/Inc
+    ${cmsis_device_f4_SOURCE_DIR}/Include
+    ${cmsis_core_SOURCE_DIR}/Include
 )
 
 #######################################################################
