@@ -92,10 +92,13 @@ set(LL_SOURCES
 	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_spi.c"
 	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_tim.c"
 	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_usart.c"
+	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_rcc.c"
 	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_utils.c"
 )
-
-list(APPEND PROJECT_SOURCES ${LL_SOURCES})
+set(SYSTEM_SOURCE 
+	"${cmsis_device_f4_SOURCE_DIR}/Source/Templates/system_stm32f4xx.c"
+)
+list(APPEND PROJECT_SOURCES ${LL_SOURCES} ${SYSTEM_SOURCE})
 
 list(APPEND PROJECT_INCLUDES 
     ${stm32f4_drivers_SOURCE_DIR}/Inc
