@@ -53,7 +53,7 @@ set (PROJECT_SOURCES
 	src/main.c
 	src/syscalls.c
 	src/sysmem.c
-
+	src/log.c
 
 	)
 
