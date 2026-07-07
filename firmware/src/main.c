@@ -16,14 +16,31 @@
  ******************************************************************************
  */
 
+#include "stm32f411xe.h"
+#include "stm32f4xx_ll_bus.h"
+#include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_utils.h"
 #include <stdint.h>
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  // #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+// #warning "FPU is not initialized, but the project is compiling for an FPU.
+// Please initialize the FPU before use."
 #endif
 
-int main(void)
-{
+int main(void) {
+    LL_GPIO_InitTypeDef led = {.Pin = LL_GPIO_PIN_8,
+                               .Mode = LL_GPIO_MODE_OUTPUT,
+                               .Speed = LL_GPIO_SPEED_FREQ_LOW,
+                               .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
+                               .Pull = LL_GPIO_PULL_NO,
+                               .Alternate = LL_GPIO_AF_0};
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+    LL_GPIO_Init(GPIOA, &led);
+
+    LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8);
+
     /* Loop forever */
-	for(;;);
+    for (;;)
+        ;
 }
+
