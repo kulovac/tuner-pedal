@@ -19,6 +19,7 @@
 #include "stm32f411xe.h"
 #include "stm32f4xx_ll_bus.h"
 #include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_rcc.h"
 #include "stm32f4xx_ll_utils.h"
 #include <stdint.h>
 
@@ -26,6 +27,8 @@
 // #warning "FPU is not initialized, but the project is compiling for an FPU.
 // Please initialize the FPU before use."
 #endif
+
+static void error_handler(void);
 
 int main(void) {
     LL_GPIO_InitTypeDef led = {.Pin = LL_GPIO_PIN_8,
@@ -39,8 +42,17 @@ int main(void) {
 
     LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8);
 
+    error_handler();
+
     /* Loop forever */
     for (;;)
         ;
 }
 
+static void error_handler(void) {
+    LL_Init1msTick(HSI_VALUE);
+    for (;;) {
+        LL_mDelay(500);
+        LL_GPIO_TogglePin(GPIOA, LL_GPIO_PIN_8);
+    }
+}
