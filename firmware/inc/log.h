@@ -21,7 +21,11 @@
 #define LOG_CLR_ERROR "\x1b[31m" // Red
 #define LOG_CLR_RESET "\x1b[0m"
 
+#if LOG_LEVEL != LOG_LEVEL_NONE
 void init_logger(void);
+#else
+#define init_logger() ((void)0)
+#endif
 
 // TRACE
 #if LOG_LEVEL <= LOG_LEVEL_TRACE
