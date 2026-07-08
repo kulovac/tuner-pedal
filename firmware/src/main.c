@@ -25,11 +25,6 @@
 #include "stm32f4xx_ll_utils.h"
 #include <stdint.h>
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-// #warning "FPU is not initialized, but the project is compiling for an FPU.
-// Please initialize the FPU before use."
-#endif
-
 static void error_handler(void);
 
 int main(void) {
