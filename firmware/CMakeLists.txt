@@ -54,6 +54,7 @@ set (PROJECT_SOURCES
 	src/syscalls.c
 	src/sysmem.c
 	src/log.c
+	src/bsp.c
 
 	)
 
@@ -72,6 +73,7 @@ set (PROJECT_INCLUDES
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ############ MODIFY ACCORDING TO REQUIREMENTS) ########################
+add_compile_definitions(LOG_LEVEL=LOG_LEVEL_TRACE)
 
 set(stm32f4_drivers_SOURCE_DIR 
 	"${CMAKE_CURRENT_SOURCE_DIR}/libs/stm32f4xx-hal-driver"
