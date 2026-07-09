@@ -19,8 +19,8 @@
 #include "bsp.h"
 #include "log.h"
 #include "stm32f4xx_ll_gpio.h"
-#include "stm32f4xx_ll_rcc.h"
 #include "stm32f4xx_ll_utils.h"
+#include "system_stm32f4xx.h"
 #include <stdint.h>
 
 static void error_handler(void);
@@ -45,7 +45,7 @@ int main(void) {
 }
 
 static void error_handler(void) {
-    LL_Init1msTick(HSI_VALUE);
+    LL_Init1msTick(SystemCoreClock);
     for (;;) {
         LL_mDelay(500);
         LL_GPIO_TogglePin(STATUS_LED_PORT, STATUS_LED_PIN);
