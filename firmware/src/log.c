@@ -1,6 +1,5 @@
 #include "log.h"
-#include "stm32f411xe.h"
-#include "stm32f4xx_ll_bus.h"
+#include "bsp.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_usart.h"
 #include <stdarg.h>
@@ -9,13 +8,14 @@
 static void usart_puts(const char *);
 
 void init_logger(void) {
-    LL_GPIO_InitTypeDef tx_pin = {.Pin = LL_GPIO_PIN_9,
+    LL_GPIO_InitTypeDef tx_pin = {.Pin = LOGGER_TX_PIN,
                                   .Mode = LL_GPIO_MODE_ALTERNATE,
                                   .Speed = LL_GPIO_SPEED_FREQ_HIGH,
                                   .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
                                   .Pull = LL_GPIO_PULL_UP,
                                   .Alternate = LL_GPIO_AF_7};
-    LL_GPIO_Init(GPIOA, &tx_pin);
+    LOGGER_TX_CLK_ENABLE();
+    LL_GPIO_Init(LOGGER_TX_PORT, &tx_pin);
 
     LL_USART_InitTypeDef logger = {.BaudRate = 115200,
                                    .DataWidth = LL_USART_DATAWIDTH_8B,
@@ -25,9 +25,9 @@ void init_logger(void) {
                                    .HardwareFlowControl =
                                        LL_USART_HWCONTROL_NONE,
                                    .OverSampling = LL_USART_OVERSAMPLING_8};
-    LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_USART1);
-    LL_USART_Init(USART1, &logger);
-    LL_USART_Enable(USART1);
+    LOGGER_USART_CLK_ENABLE();
+    LL_USART_Init(LOGGER_USART, &logger);
+    LL_USART_Enable(LOGGER_USART);
 }
 
 void usart_printf(const char *str, ...) {
@@ -43,8 +43,8 @@ void usart_printf(const char *str, ...) {
 
 static void usart_puts(const char *str) {
     while (*str != '\0') {
-        while (!LL_USART_IsActiveFlag_TXE(USART1))
+        while (!LL_USART_IsActiveFlag_TXE(LOGGER_USART))
             ;
-        LL_USART_TransmitData8(USART1, *str++);
+        LL_USART_TransmitData8(LOGGER_USART, *str++);
     }
 }
