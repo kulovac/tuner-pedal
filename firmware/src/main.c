@@ -26,18 +26,10 @@
 static void error_handler(void);
 
 int main(void) {
-    LL_GPIO_InitTypeDef led = {.Pin = STATUS_LED_PIN,
-                               .Mode = LL_GPIO_MODE_OUTPUT,
-                               .Speed = LL_GPIO_SPEED_FREQ_LOW,
-                               .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
-                               .Pull = LL_GPIO_PULL_NO,
-                               .Alternate = LL_GPIO_AF_0};
-    STATUS_LED_CLK_ENABLE();
-    LL_GPIO_Init(STATUS_LED_PORT, &led);
+    bsp_init();
+    init_logger();
 
     LL_GPIO_SetOutputPin(STATUS_LED_PORT, STATUS_LED_PIN);
-
-    init_logger();
 
     log_trace("entering test %d", 1);
     log_debug("entering test %d", 2);

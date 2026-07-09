@@ -1,20 +1,24 @@
 #include "log.h"
 #include "bsp.h"
+#include "stm32f4xx_ll_bus.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_usart.h"
 #include <stdarg.h>
 #include <stdio.h>
 
+#if LOG_LEVEL != LOG_LEVEL_NONE
+
 static void usart_puts(const char *);
 
 void init_logger(void) {
+    LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_USART1);
+
     LL_GPIO_InitTypeDef tx_pin = {.Pin = LOGGER_TX_PIN,
                                   .Mode = LL_GPIO_MODE_ALTERNATE,
                                   .Speed = LL_GPIO_SPEED_FREQ_HIGH,
                                   .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
                                   .Pull = LL_GPIO_PULL_UP,
-                                  .Alternate = LL_GPIO_AF_7};
-    LOGGER_TX_CLK_ENABLE();
+                                  .Alternate = LOGGER_TX_AF};
     LL_GPIO_Init(LOGGER_TX_PORT, &tx_pin);
 
     LL_USART_InitTypeDef logger = {.BaudRate = 115200,
@@ -25,7 +29,7 @@ void init_logger(void) {
                                    .HardwareFlowControl =
                                        LL_USART_HWCONTROL_NONE,
                                    .OverSampling = LL_USART_OVERSAMPLING_8};
-    LOGGER_USART_CLK_ENABLE();
+
     LL_USART_Init(LOGGER_USART, &logger);
     LL_USART_Enable(LOGGER_USART);
 }
@@ -48,3 +52,5 @@ static void usart_puts(const char *str) {
         LL_USART_TransmitData8(LOGGER_USART, *str++);
     }
 }
+
+#endif

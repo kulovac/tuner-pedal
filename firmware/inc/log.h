@@ -23,15 +23,16 @@
 
 #if LOG_LEVEL != LOG_LEVEL_NONE
 void init_logger(void);
+void usart_printf(const char *str, ...);
 #else
 #define init_logger() ((void)0)
+#define usart_printf() ((void)0)
 #endif
 
 // TRACE
 #if LOG_LEVEL <= LOG_LEVEL_TRACE
 #define log_trace(fmt, ...)                                                    \
     do {                                                                       \
-        extern void usart_printf(const char *format, ...);                     \
         usart_printf(LOG_CLR_TRACE "[TRACE] " LOG_CLR_RESET fmt "\r\n",        \
                      ##__VA_ARGS__);                                           \
     } while (0)
@@ -43,7 +44,6 @@ void init_logger(void);
 #if LOG_LEVEL <= LOG_LEVEL_DEBUG
 #define log_debug(fmt, ...)                                                    \
     do {                                                                       \
-        extern int usart_printf(const char *format, ...);                      \
         usart_printf(LOG_CLR_DEBUG "[DEBUG] " LOG_CLR_RESET fmt "\r\n",        \
                      ##__VA_ARGS__);                                           \
     } while (0)
@@ -55,7 +55,6 @@ void init_logger(void);
 #if LOG_LEVEL <= LOG_LEVEL_INFO
 #define log_info(fmt, ...)                                                     \
     do {                                                                       \
-        extern void usart_printf(const char *format, ...);                     \
         usart_printf(LOG_CLR_INFO "[INFO] " LOG_CLR_RESET fmt "\r\n",          \
                      ##__VA_ARGS__);                                           \
     } while (0)
@@ -67,7 +66,6 @@ void init_logger(void);
 #if LOG_LEVEL <= LOG_LEVEL_WARN
 #define log_warn(fmt, ...)                                                     \
     do {                                                                       \
-        extern void usart_printf(const char *format, ...);                     \
         usart_printf(LOG_CLR_WARN "[WARN] " LOG_CLR_RESET fmt "\r\n",          \
                      ##__VA_ARGS__);                                           \
     } while (0)
@@ -79,7 +77,6 @@ void init_logger(void);
 #if LOG_LEVEL <= LOG_LEVEL_ERROR
 #define log_error(fmt, ...)                                                    \
     do {                                                                       \
-        extern void usart_printf(const char *format, ...);                     \
         usart_printf(LOG_CLR_ERROR "[ERROR] " LOG_CLR_RESET fmt "\r\n",        \
                      ##__VA_ARGS__);                                           \
     } while (0)
