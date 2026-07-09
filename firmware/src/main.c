@@ -16,28 +16,26 @@
  ******************************************************************************
  */
 
+#include "bsp.h"
 #include "log.h"
-#include "stm32f411xe.h"
-#include "stm32f4xx_ll_bus.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_rcc.h"
-#include "stm32f4xx_ll_usart.h"
 #include "stm32f4xx_ll_utils.h"
 #include <stdint.h>
 
 static void error_handler(void);
 
 int main(void) {
-    LL_GPIO_InitTypeDef led = {.Pin = LL_GPIO_PIN_8,
+    LL_GPIO_InitTypeDef led = {.Pin = STATUS_LED_PIN,
                                .Mode = LL_GPIO_MODE_OUTPUT,
                                .Speed = LL_GPIO_SPEED_FREQ_LOW,
                                .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
                                .Pull = LL_GPIO_PULL_NO,
                                .Alternate = LL_GPIO_AF_0};
-    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-    LL_GPIO_Init(GPIOA, &led);
+    STATUS_LED_CLK_ENABLE();
+    LL_GPIO_Init(STATUS_LED_PORT, &led);
 
-    LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_8);
+    LL_GPIO_SetOutputPin(STATUS_LED_PORT, STATUS_LED_PIN);
 
     init_logger();
 
@@ -58,6 +56,6 @@ static void error_handler(void) {
     LL_Init1msTick(HSI_VALUE);
     for (;;) {
         LL_mDelay(500);
-        LL_GPIO_TogglePin(GPIOA, LL_GPIO_PIN_8);
+        LL_GPIO_TogglePin(STATUS_LED_PORT, STATUS_LED_PIN);
     }
 }
