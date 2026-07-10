@@ -11,6 +11,13 @@
 #define LOGGER_TX_PIN LL_GPIO_PIN_9
 #define LOGGER_TX_AF LL_GPIO_AF_7
 
+#define ADC_I2S SPI1
+#define ADC_I2S_PORT GPIOA
+#define ADC_I2S_BCLK_PIN LL_GPIO_PIN_5
+#define ADC_I2S_WS_PIN LL_GPIO_PIN_4
+#define ADC_I2S_SD_PIN LL_GPIO_PIN_7
+#define ADC_I2S_AF LL_GPIO_AF_5
+
 void bsp_init(void);
 
 #endif /* BSP_H */
