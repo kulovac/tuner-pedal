@@ -19,6 +19,7 @@
 #include "bsp.h"
 #include "log.h"
 #include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
 #include "system_stm32f4xx.h"
 #include <stdint.h>
@@ -37,11 +38,43 @@ int main(void) {
     log_warn("entering test %d", 4);
     log_error("entering test %d", 5);
 
-    error_handler();
-
     /* Loop forever */
-    for (;;)
-        ;
+    for (;;) {
+        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+            ;
+
+        if (LL_I2S_IsActiveFlag_CHSIDE(ADC_I2S) == 1) {
+            // Here we are about to read a right channel
+            // but we need a left, so we restart the loop
+            // until we get a left channel
+            LL_I2S_ReceiveData16(ADC_I2S);
+            continue;
+        }
+
+        // left channel
+        uint16_t msb = LL_I2S_ReceiveData16(ADC_I2S);
+
+        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+            ;
+        uint16_t lsb = LL_I2S_ReceiveData16(ADC_I2S);
+
+        uint32_t left = (((uint32_t)msb) << 16) | lsb;
+
+        // right channel
+        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+            ;
+        msb = LL_I2S_ReceiveData16(ADC_I2S);
+
+        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+            ;
+        lsb = LL_I2S_ReceiveData16(ADC_I2S);
+
+        uint32_t right = (((uint32_t)msb) << 16) | lsb;
+
+        log_info("Left channel %lu\nRight channel %lu", left, right);
+    }
+
+    error_handler();
 }
 
 static void error_handler(void) {
