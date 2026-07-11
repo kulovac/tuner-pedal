@@ -42,11 +42,12 @@ int main(void) {
     log_warn("entering test %d", 4);
     log_error("entering test %d", 5);
 
-    int32_t buffer[BUFFER_SIZE] = {0};
+    int32_t buffer[BUFFER_SIZE];
 
     /* Loop forever */
     for (;;) {
         for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
+        restart:
             while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
                 ;
 
@@ -55,7 +56,7 @@ int main(void) {
                 // but we need a left, so we restart the loop
                 // until we get a left channel
                 LL_I2S_ReceiveData16(ADC_I2S);
-                continue;
+                goto restart;
             }
 
             // left channel
@@ -73,9 +74,9 @@ int main(void) {
         for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
             log_info("L: %d\tR: %d", buffer[i], buffer[i + 1]);
         }
-
-        error_handler();
     }
+
+    error_handler();
 }
 
 static int32_t collect_sample(void) {
