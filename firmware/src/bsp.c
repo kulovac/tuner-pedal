@@ -15,6 +15,7 @@ void bsp_init(void) {
     clock_init();
 
     LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+    LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SPI1);
 
     // TODO: Refactor these inits into static helpers
 
@@ -44,6 +45,7 @@ void bsp_init(void) {
                               .AudioFreq = LL_I2S_AUDIOFREQ_16K,
                               .ClockPolarity = LL_I2S_POLARITY_LOW};
     LL_I2S_Init(ADC_I2S, &i2s);
+    LL_I2S_Enable(ADC_I2S);
 }
 
 static void clock_init(void) {
