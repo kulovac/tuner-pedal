@@ -55,6 +55,7 @@ set (PROJECT_SOURCES
 	src/sysmem.c
 	src/log.c
 	src/bsp.c
+	src/dsp.c
 
 	)
 
@@ -62,6 +63,7 @@ set (PROJECT_DEFINES
 	# LIST COMPILER DEFINITIONS HERE
 	STM32F411xE
 	USE_FULL_LL_DRIVER
+	ARM_MATH_CM4
     )
 
 set (PROJECT_INCLUDES
@@ -84,6 +86,9 @@ set(cmsis_device_f4_SOURCE_DIR
 set(cmsis_core_SOURCE_DIR 
 	"${CMAKE_CURRENT_SOURCE_DIR}/libs/cm4"
 )
+set(cmsis_dsp_SOURCE_DIR 
+	"${cmsis_core_SOURCE_DIR}/DSP"
+)
 
 set(LL_SOURCES 
 	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_adc.c"
@@ -100,12 +105,21 @@ set(LL_SOURCES
 set(SYSTEM_SOURCE 
 	"${cmsis_device_f4_SOURCE_DIR}/Source/Templates/system_stm32f4xx.c"
 )
-list(APPEND PROJECT_SOURCES ${LL_SOURCES} ${SYSTEM_SOURCE})
+set(CMSIS_DSP_SOURCES
+    "${cmsis_dsp_SOURCE_DIR}/Source/BasicMathFunctions/BasicMathFunctions.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/FastMathFunctions/FastMathFunctions.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/FilteringFunctions/FilteringFunctions.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/TransformFunctions/TransformFunctions.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/SupportFunctions/SupportFunctions.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/CommonTables/CommonTables.c"
+)
+list(APPEND PROJECT_SOURCES ${LL_SOURCES} ${SYSTEM_SOURCE} ${CMSIS_DSP_SOURCES})
 
 list(APPEND PROJECT_INCLUDES 
     ${stm32f4_drivers_SOURCE_DIR}/Inc
     ${cmsis_device_f4_SOURCE_DIR}/Include
     ${cmsis_core_SOURCE_DIR}/Include
+    ${cmsis_dsp_SOURCE_DIR}/Include
 )
 
 #######################################################################
