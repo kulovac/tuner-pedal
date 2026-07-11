@@ -20,4 +20,6 @@
 
 void bsp_init(void);
 
+enum CHSIDE { CHLEFT = 0, CHRIGHT = 1 };
+
 #endif /* BSP_H */
