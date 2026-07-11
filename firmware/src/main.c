@@ -22,9 +22,13 @@
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
 #include "system_stm32f4xx.h"
+#include <stddef.h>
 #include <stdint.h>
 
+#define BUFFER_SIZE 1024
+
 static void error_handler(void);
+static int32_t collect_sample(void);
 
 int main(void) {
     bsp_init();
@@ -38,49 +42,57 @@ int main(void) {
     log_warn("entering test %d", 4);
     log_error("entering test %d", 5);
 
+    int32_t buffer[BUFFER_SIZE] = {0};
+
     /* Loop forever */
     for (;;) {
-        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
-            ;
+        for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
+            while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+                ;
 
-        if (LL_I2S_IsActiveFlag_CHSIDE(ADC_I2S) == 1) {
-            // Here we are about to read a right channel
-            // but we need a left, so we restart the loop
-            // until we get a left channel
-            LL_I2S_ReceiveData16(ADC_I2S);
-            continue;
+            if (LL_I2S_IsActiveFlag_CHSIDE(ADC_I2S) == 1) {
+                // Here we are about to read a right channel
+                // but we need a left, so we restart the loop
+                // until we get a left channel
+                LL_I2S_ReceiveData16(ADC_I2S);
+                continue;
+            }
+
+            // left channel
+            int32_t left = collect_sample();
+
+            // right channel
+            while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+                ;
+            int32_t right = collect_sample();
+
+            buffer[i] = left;
+            buffer[i + 1] = right;
         }
 
-        // left channel
-        uint16_t msb = LL_I2S_ReceiveData16(ADC_I2S);
+        for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
+            log_info("L: %d\tR: %d", buffer[i], buffer[i + 1]);
+        }
 
-        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
-            ;
-        uint16_t lsb = LL_I2S_ReceiveData16(ADC_I2S);
-
-        uint32_t left = (((uint32_t)msb) << 16) | lsb;
-
-        // right channel
-        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
-            ;
-        msb = LL_I2S_ReceiveData16(ADC_I2S);
-
-        while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
-            ;
-        lsb = LL_I2S_ReceiveData16(ADC_I2S);
-
-        uint32_t right = (((uint32_t)msb) << 16) | lsb;
-
-        log_info("Left channel %x\tRight channel %x", left, right);
+        error_handler();
     }
+}
 
-    error_handler();
+static int32_t collect_sample(void) {
+    uint16_t msb = LL_I2S_ReceiveData16(ADC_I2S);
+
+    while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+        ;
+    uint16_t lsb = LL_I2S_ReceiveData16(ADC_I2S);
+
+    int32_t merge = (int32_t)(((uint32_t)msb << 16) | lsb);
+    return merge >> 8;
 }
 
 static void error_handler(void) {
     LL_Init1msTick(SystemCoreClock);
     for (;;) {
-        LL_mDelay(500);
         LL_GPIO_TogglePin(STATUS_LED_PORT, STATUS_LED_PIN);
+        LL_mDelay(500);
     }
 }
