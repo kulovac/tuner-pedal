@@ -71,7 +71,7 @@ int main(void) {
 
         uint32_t right = (((uint32_t)msb) << 16) | lsb;
 
-        log_info("Left channel %lu\nRight channel %lu", left, right);
+        log_info("Left channel %x\tRight channel %x", left, right);
     }
 
     error_handler();
