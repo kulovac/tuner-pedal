@@ -17,6 +17,7 @@
  */
 
 #include "bsp.h"
+#include "dsp.h"
 #include "log.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_spi.h"
@@ -25,8 +26,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-
-#define BUFFER_SIZE 1024
 
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
