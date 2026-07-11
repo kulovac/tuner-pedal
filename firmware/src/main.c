@@ -22,13 +22,14 @@
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
 #include "system_stm32f4xx.h"
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 
 #define BUFFER_SIZE 1024
 
 static void error_handler(void);
-static int32_t collect_sample(void);
+static bool collect_sample(int32_t *, enum CHSIDE);
 
 int main(void) {
     bsp_init();
@@ -46,26 +47,19 @@ int main(void) {
 
     /* Loop forever */
     for (;;) {
+        if (LL_I2S_IsActiveFlag_OVR(ADC_I2S))
+            LL_I2S_ClearFlag_OVR(ADC_I2S);
+
         for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
-        restart:
-            while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
-                ;
-
-            if (LL_I2S_IsActiveFlag_CHSIDE(ADC_I2S) == 1) {
-                // Here we are about to read a right channel
-                // but we need a left, so we restart the loop
-                // until we get a left channel
-                LL_I2S_ReceiveData16(ADC_I2S);
-                goto restart;
-            }
-
             // left channel
-            int32_t left = collect_sample();
+            int32_t left;
+            while (!collect_sample(&left, CHLEFT))
+                ;
 
             // right channel
-            while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+            int32_t right;
+            while (!collect_sample(&right, CHRIGHT))
                 ;
-            int32_t right = collect_sample();
 
             buffer[i] = left;
             buffer[i + 1] = right;
@@ -79,15 +73,27 @@ int main(void) {
     error_handler();
 }
 
-static int32_t collect_sample(void) {
+static bool collect_sample(int32_t *val, enum CHSIDE ch) {
+    while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
+        ;
+    if (LL_I2S_IsActiveFlag_CHSIDE(ADC_I2S) != ch) {
+        LL_I2S_ReceiveData16(ADC_I2S);
+        return false;
+    }
     uint16_t msb = LL_I2S_ReceiveData16(ADC_I2S);
 
     while (!LL_I2S_IsActiveFlag_RXNE(ADC_I2S))
         ;
+    if (LL_I2S_IsActiveFlag_CHSIDE(ADC_I2S) != ch) {
+        LL_I2S_ReceiveData16(ADC_I2S);
+        return false;
+    }
     uint16_t lsb = LL_I2S_ReceiveData16(ADC_I2S);
 
     int32_t merge = (int32_t)(((uint32_t)msb << 16) | lsb);
-    return merge >> 8;
+    *val = merge >> 8;
+
+    return true;
 }
 
 static void error_handler(void) {
