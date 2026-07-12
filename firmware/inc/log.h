@@ -72,4 +72,16 @@ void usart_printf(const char *str, ...);
 #define log_error(fmt, ...) ((void)0)
 #endif
 
+// ASSERT
+#if LOG_LEVEL <= LOG_LEVEL_ERROR
+#define log_assert(cond, fmt, ...)                                             \
+    do {                                                                       \
+        if (!(cond)) {                                                         \
+            log_error(fmt, ##__VA_ARGS__);                                     \
+        }                                                                      \
+    } while (0)
+#else
+#define log_assert(cond, fmt, ...) ((void)0)
+#endif
+
 #endif // LOG_H
