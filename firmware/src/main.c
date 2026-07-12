@@ -16,6 +16,7 @@
  ******************************************************************************
  */
 
+#include "arm_math.h"
 #include "bsp.h"
 #include "dsp.h"
 #include "log.h"
@@ -33,6 +34,7 @@ static bool collect_sample(int32_t *, enum CHSIDE);
 int main(void) {
     bsp_init();
     init_logger();
+    init_dsp();
 
     LL_GPIO_SetOutputPin(STATUS_LED_PORT, STATUS_LED_PIN);
 
@@ -42,31 +44,33 @@ int main(void) {
     log_warn("entering test %d", 4);
     log_error("entering test %d", 5);
 
-    int32_t buffer[BUFFER_SIZE];
+    float buffer[BUFFER_SIZE];
 
     /* Loop forever */
     for (;;) {
         if (LL_I2S_IsActiveFlag_OVR(ADC_I2S))
             LL_I2S_ClearFlag_OVR(ADC_I2S);
 
-        for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
+        for (size_t i = 0; i < BUFFER_SIZE; ++i) {
             // left channel
             int32_t left;
             while (!collect_sample(&left, CHLEFT))
                 ;
 
             // right channel
+            //
+            // NOTE: We ignore this one since
+            // we are sampling a mono signal
+            // and this channel is grounded
             int32_t right;
             while (!collect_sample(&right, CHRIGHT))
                 ;
 
-            buffer[i] = left;
-            buffer[i + 1] = right;
+            buffer[i] = (float)left;
         }
 
-        for (size_t i = 0; i < BUFFER_SIZE; i += 2) {
-            log_info("L: %d\tR: %d", buffer[i], buffer[i + 1]);
-        }
+        float freq = compute_yin(buffer);
+        log_info("Recorded freq: %d", (int32_t)freq);
     }
 
     error_handler();
