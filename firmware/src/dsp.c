@@ -25,6 +25,7 @@ static arm_rfft_fast_instance_f32 rfft;
 static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]);
 static void cumsum_f32(float32_t *pSrc, float32_t *pDst, size_t src_len);
 static size_t get_pitch(float32_t cmdf[TAU_MAX]);
+static float32_t parabolic_interp(float32_t cmdf[TAU_MAX], size_t tau);
 static void
 cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]);
 
@@ -41,8 +42,9 @@ float compute_yin(float32_t sig[BUFFER_SIZE]) {
     difference_function(sig, df);
     cumulative_mean_normalized_difference_function(df);
     size_t tau = get_pitch(df);
+    float32_t tauf = parabolic_interp(df, tau);
 
-    return (tau > 0) ? ((float32_t)SR / (float32_t)tau) : 0.0f;
+    return (float32_t)SR / tauf;
 }
 
 static void cumsum_f32(float32_t *pSrc, float32_t *pDst, size_t src_len) {
@@ -109,4 +111,16 @@ static size_t get_pitch(float32_t cmdf[TAU_MAX]) {
     }
 
     return 0; // if unvoiced
+}
+
+static float32_t parabolic_interp(float32_t cmdf[TAU_MAX], size_t tau) {
+    if (tau == 0 || tau == TAU_MAX - 1) {
+        return (float32_t)tau;
+    }
+
+    float32_t offset =
+        (cmdf[tau + 1] - cmdf[tau - 1]) /
+        (2.0f * (2.0f * cmdf[tau] - cmdf[tau + 1] - cmdf[tau - 1]));
+
+    return offset + (float32_t)tau;
 }
