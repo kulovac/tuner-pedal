@@ -70,7 +70,9 @@ int main(void) {
         }
 
         float freq = compute_yin(buffer);
-        log_info("Recorded freq: %d", (int32_t)freq);
+        int32_t freq_scaled = (int32_t)(freq * 100.0f + 0.5f);
+        log_info("Recorded freq: %d.%02d", freq_scaled / 100,
+                 freq_scaled % 100);
     }
 
     error_handler();
