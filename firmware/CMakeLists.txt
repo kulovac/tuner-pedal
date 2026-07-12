@@ -108,6 +108,7 @@ set(SYSTEM_SOURCE
 set(CMSIS_DSP_SOURCES
     "${cmsis_dsp_SOURCE_DIR}/Source/BasicMathFunctions/BasicMathFunctions.c"
     "${cmsis_dsp_SOURCE_DIR}/Source/FastMathFunctions/FastMathFunctions.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/ComplexMathFunctions/ComplexMathFunctions.c"
     "${cmsis_dsp_SOURCE_DIR}/Source/FilteringFunctions/FilteringFunctions.c"
     "${cmsis_dsp_SOURCE_DIR}/Source/TransformFunctions/TransformFunctions.c"
     "${cmsis_dsp_SOURCE_DIR}/Source/SupportFunctions/SupportFunctions.c"
