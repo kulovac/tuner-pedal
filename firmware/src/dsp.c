@@ -19,6 +19,8 @@
 #define HARMO_THRESH 0.3f
 #define TAU_MAX (SR / F0_MIN)
 #define TAU_MIN (SR / F0_MAX)
+// Size of the FFT buffer (W_LEN + TAU_MAX)
+#define FFT_LEN (2 * W_LEN)
 
 static arm_rfft_fast_instance_f32 rfft;
 
@@ -31,7 +33,7 @@ cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]);
 
 void init_dsp(void) {
     // TODO: Finalize the buffer length `BUFFER_SIZE`
-    arm_status status = arm_rfft_fast_init_f32(&rfft, W_LEN << 1);
+    arm_status status = arm_rfft_fast_init_f32(&rfft, FFT_LEN);
     log_assert(status == ARM_MATH_SUCCESS, "Failed to init dsp unit");
 }
 
@@ -60,25 +62,25 @@ static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]) {
     float32_t sum[W_LEN + 1];
     cumsum_f32(mult, sum, W_LEN);
 
-    float32_t sig_padded[W_LEN << 1] = {0};
+    float32_t sig_padded[FFT_LEN] = {0};
     for (size_t i = 0; i < W_LEN; ++i) {
         sig_padded[i] = frame[i];
     }
 
-    float32_t fc[W_LEN << 1];
+    float32_t fc[FFT_LEN];
     arm_rfft_fast_f32(&rfft, sig_padded, fc, 0);
 
-    float32_t fc_conj[W_LEN << 1];
+    float32_t fc_conj[FFT_LEN];
     fc_conj[0] = fc[0];
     fc_conj[1] = fc[1];
     arm_cmplx_conj_f32(fc + 2, fc_conj + 2, W_LEN - 1);
 
-    float32_t fft_conv[W_LEN << 1] = {0};
+    float32_t fft_conv[FFT_LEN] = {0};
     arm_mult_f32(fc, fc_conj, fft_conv, 2);
     arm_cmplx_mult_cmplx_f32(fc + 2, fc_conj + 2, fft_conv + 2, W_LEN - 1);
 
     // XXX: The actual length is TAU_MAX
-    float32_t conv[W_LEN << 1];
+    float32_t conv[FFT_LEN];
     arm_rfft_fast_f32(&rfft, fft_conv, conv, 1);
 
     for (size_t i = 0; i < TAU_MAX; ++i) {
