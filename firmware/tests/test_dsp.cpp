@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <cstdlib>
 #include <gtest/gtest.h>
 #include <iterator>
 
@@ -114,7 +115,7 @@ TEST_F(DSPTest, CMNDF_DivByZero) {
 TEST_F(DSPTest, GetPitchA4) {
     const float A4 = 440.0f;
     size_t tau = get_pitch(a4_sig_cmndf);
-    ASSERT_EQ(tau, static_cast<size_t>(SR / A4));
+    ASSERT_EQ(tau, static_cast<size_t>(std::round(SR / A4)));
 }
 
 TEST_F(DSPTest, GetPitchDC) {
@@ -124,6 +125,33 @@ TEST_F(DSPTest, GetPitchDC) {
     size_t tau = get_pitch(dc_sig);
 
     ASSERT_EQ(tau, 0);
+}
+
+TEST_F(DSPTest, ParabolicInterpA4) {
+    const float A4 = 440.0f;
+
+    float32_t tauf = parabolic_interp(a4_sig_cmndf,
+                                      static_cast<size_t>(std::round(SR / A4)));
+    float32_t freq = SR / tauf;
+
+    const float cents_diff = 1200.0f * std::abs(std::log2(freq / A4));
+
+    // Must be within 0.5 cents of 440Hz
+    ASSERT_NEAR(cents_diff, 0.0f, 0.5f);
+}
+
+TEST_F(DSPTest, ParabolicInterpSymmetric) {
+    float32_t cmndf[TAU_MAX] = {2.0f, 1.0f, 2.0f};
+    float32_t tauf = parabolic_interp(cmndf, 1);
+
+    ASSERT_NEAR(tauf, 1.0f, abs_error);
+}
+
+TEST_F(DSPTest, ParabolicInterpRightShift) {
+    float32_t cmndf[TAU_MAX] = {3.0f, 1.0f, 1.5f};
+    float32_t tauf = parabolic_interp(cmndf, 1);
+
+    ASSERT_NEAR(tauf, 1.3f, abs_error);
 }
 
 extern const float32_t a4_sig[BUFFER_SIZE] = {
