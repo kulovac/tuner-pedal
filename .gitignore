@@ -107,3 +107,4 @@ dkms.conf
 
 # CMake files 
 build/
+__cmake_systeminformation/
