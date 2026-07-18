@@ -26,6 +26,7 @@ target_include_directories(firmware_tests PRIVATE
 
 target_compile_definitions(firmware_tests PRIVATE
     LOG_LEVEL=LOG_LEVEL_NONE
+    __PROGRAM_START
 )
 
 target_link_libraries(firmware_tests PRIVATE
