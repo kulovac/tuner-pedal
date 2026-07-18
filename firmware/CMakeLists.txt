@@ -21,14 +21,14 @@ set(LOG_LEVEL "LOG_LEVEL_TRACE" CACHE STRING "Set the firmware logging level")
 ###################### CONSTANTS ######################################
 set (PROJECT_TYPE_EXECUTABLE          "exe")
 set (PROJECT_TYPE_STATIC_LIBRARY      "static-lib")
-set (MCPU_CORTEX_M0				      "-mcpu=cortex-m0")
-set (MCPU_CORTEX_M0PLUS				  "-mcpu=cortex-m0plus")
-set (MCPU_CORTEX_M3				      "-mcpu=cortex-m3")
-set (MCPU_CORTEX_M4				      "-mcpu=cortex-m4")
-set (MCPU_CORTEX_M7				      "-mcpu=cortex-m7")
-set (MCPU_CORTEX_M33				  "-mcpu=cortex-m33")
-set (MCPU_CORTEX_M55				  "-mcpu=cortex-m55")
-set (MCPU_CORTEX_M85				  "-mcpu=cortex-m85")
+set (MCPU_CORTEX_M0                   "-mcpu=cortex-m0")
+set (MCPU_CORTEX_M0PLUS	              "-mcpu=cortex-m0plus")
+set (MCPU_CORTEX_M3                   "-mcpu=cortex-m3")
+set (MCPU_CORTEX_M4                   "-mcpu=cortex-m4")
+set (MCPU_CORTEX_M7                   "-mcpu=cortex-m7")
+set (MCPU_CORTEX_M33                  "-mcpu=cortex-m33")
+set (MCPU_CORTEX_M55                  "-mcpu=cortex-m55")
+set (MCPU_CORTEX_M85                  "-mcpu=cortex-m85")
 set (MFPU_FPV4_SP_D16                 "-mfpu=fpv4-sp-d16")
 set (MFPU_FPV4                        "-mfpu=vfpv4")
 set (MFPU_FPV5_D16                    "-mfpu=fpv5-d16")
@@ -45,15 +45,15 @@ set (MFLOAT_ABI_MIX                   "-mfloat-abi=softfp")
 set (PROJECT_NAME             "firmware")
 set (PROJECT_TYPE             "exe")
 set (LINKER_SCRIPT            "../../STM32F411CEUX_FLASH.ld")
-set (MCPU                     "-mcpu=cortex-m4") # Fixed capitalization just in case
-set (MFPU                 "-mfpu=fpv4-sp-d16")
-set (MFLOAT_ABI               "-mfloat-abi=hard") # Set to hard since F411 has an FPU
+set (MCPU                     "-mcpu=cortex-m4")
+set (MFPU                     "-mfpu=fpv4-sp-d16")
+set (MFLOAT_ABI               "-mfloat-abi=hard")
 set (RUNTIME_LIBRARY          "--specs=nano.specs")
 set (RUNTIME_LIBRARY_SYSCALLS "--specs=nosys.specs")
 
 project(${PROJECT_NAME} C ASM)
 
-set (PROJECT_SOURCES
+set(PROJECT_SOURCES
 	# LIST SOURCE FILES HERE
 	startup/startup_stm32f411ceux.s
 	src/main.c
@@ -62,49 +62,48 @@ set (PROJECT_SOURCES
 	src/log.c
 	src/bsp.c
 	src/dsp.c
+)
 
-	)
-
-set (PROJECT_DEFINES
+set(PROJECT_DEFINES
 	# LIST COMPILER DEFINITIONS HERE
 	STM32F411xE
 	USE_FULL_LL_DRIVER
 	ARM_MATH_CM4
-    )
+)
 
 set (PROJECT_INCLUDES
 	# LIST INCLUDE DIRECTORIES HERE
 	src
 	inc
-    )
+)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ############ MODIFY ACCORDING TO REQUIREMENTS) ########################
 set(stm32f4_drivers_SOURCE_DIR 
-	"${CMAKE_CURRENT_SOURCE_DIR}/libs/stm32f4xx-hal-driver"
+    "${CMAKE_CURRENT_SOURCE_DIR}/libs/stm32f4xx-hal-driver"
 )
 set(cmsis_device_f4_SOURCE_DIR 
-	"${CMAKE_CURRENT_SOURCE_DIR}/libs/cmsis-device-f4"
+    "${CMAKE_CURRENT_SOURCE_DIR}/libs/cmsis-device-f4"
 )
 set(cmsis_core_SOURCE_DIR 
-	"${CMAKE_CURRENT_SOURCE_DIR}/libs/cm4"
+    "${CMAKE_CURRENT_SOURCE_DIR}/libs/cm4"
 )
 set(cmsis_dsp_SOURCE_DIR 
-	"${cmsis_core_SOURCE_DIR}/DSP"
+    "${cmsis_core_SOURCE_DIR}/DSP"
 )
 
 set(LL_SOURCES 
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_adc.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_dma.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_dma2d.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_exti.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_gpio.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_spi.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_tim.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_usart.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_rcc.c"
-	"${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_utils.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_adc.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_dma.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_dma2d.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_exti.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_gpio.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_spi.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_tim.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_usart.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_rcc.c"
+    "${stm32f4_drivers_SOURCE_DIR}/Src/stm32f4xx_ll_utils.c"
 )
 set(SYSTEM_SOURCE 
 	"${cmsis_device_f4_SOURCE_DIR}/Source/Templates/system_stm32f4xx.c"
