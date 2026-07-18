@@ -27,12 +27,12 @@ TEST_F(DSPTest, CumulativeSum) {
     std::fill(std::begin(pDest), std::end(pDest), NAN);
     cumsum_f32(pSrc, pDest, 5);
 
-    ASSERT_EQ(pDest[0], 0.0f);
-    ASSERT_EQ(pDest[1], 1.0f);
-    ASSERT_EQ(pDest[2], 3.0f);
-    ASSERT_EQ(pDest[3], 6.0f);
-    ASSERT_EQ(pDest[4], 10.0f);
-    ASSERT_EQ(pDest[5], 15.0f);
+    EXPECT_EQ(pDest[0], 0.0f);
+    EXPECT_EQ(pDest[1], 1.0f);
+    EXPECT_EQ(pDest[2], 3.0f);
+    EXPECT_EQ(pDest[3], 6.0f);
+    EXPECT_EQ(pDest[4], 10.0f);
+    EXPECT_EQ(pDest[5], 15.0f);
 }
 
 TEST_F(DSPTest, DifferenceFunctionA4) {
@@ -43,7 +43,8 @@ TEST_F(DSPTest, DifferenceFunctionA4) {
         *std::max_element(std::begin(a4_sig_diff), std::end(a4_sig_diff));
 
     for (size_t i = 0; i < TAU_MAX; ++i) {
-        ASSERT_NEAR(diff[i], a4_sig_diff[i], max / 10000.0f);
+        EXPECT_NEAR(diff[i], a4_sig_diff[i], max / 10000.0f)
+            << "Failed at index " << i;
     }
 }
 
@@ -57,7 +58,7 @@ TEST_F(DSPTest, DifferenceFunctionDC) {
     difference_function(dc_sig, diff);
 
     for (size_t i = 0; i < TAU_MAX; ++i) {
-        ASSERT_NEAR(diff[i], 0.0f, abs_error);
+        EXPECT_NEAR(diff[i], 0.0f, abs_error) << "Failed at index " << i;
     }
 }
 
@@ -70,9 +71,10 @@ TEST_F(DSPTest, DifferenceFunctionImpulse) {
 
     difference_function(impulse_sig, diff);
 
-    ASSERT_NEAR(diff[0], 0.0f, abs_error);
+    EXPECT_NEAR(diff[0], 0.0f, abs_error);
     for (size_t i = 1; i < TAU_MAX; ++i) {
-        ASSERT_NEAR(diff[i], amplitude * amplitude, abs_error);
+        EXPECT_NEAR(diff[i], amplitude * amplitude, abs_error)
+            << "Failed at index " << i;
     }
 }
 
@@ -85,7 +87,8 @@ TEST_F(DSPTest, CMNDF_A4) {
         *std::max_element(std::begin(a4_sig_cmndf), std::end(a4_sig_cmndf));
 
     for (size_t i = 0; i < TAU_MAX; ++i) {
-        ASSERT_NEAR(diff[i], a4_sig_cmndf[i], max / 10000.0f);
+        EXPECT_NEAR(diff[i], a4_sig_cmndf[i], max / 10000.0f)
+            << "Failed at index " << i;
     }
 }
 
@@ -96,7 +99,7 @@ TEST_F(DSPTest, CMNDF_DC) {
     cumulative_mean_normalized_difference_function(df);
 
     for (size_t i = 0; i < TAU_MAX; ++i) {
-        ASSERT_NEAR(df[i], 1.0f, abs_error);
+        EXPECT_NEAR(df[i], 1.0f, abs_error) << "Failed at index " << i;
     }
 }
 
@@ -107,15 +110,15 @@ TEST_F(DSPTest, CMNDF_DivByZero) {
 
     // Expecting code to handle dead silence by clamping to 1.0f
     for (size_t i = 0; i < TAU_MAX; ++i) {
-        ASSERT_FALSE(std::isnan(df[i])) << "NaN detected at index " << i;
-        ASSERT_NEAR(df[i], 1.0f, 0.00001f);
+        EXPECT_FALSE(std::isnan(df[i])) << "NaN detected at index " << i;
+        EXPECT_NEAR(df[i], 1.0f, 0.00001f);
     }
 }
 
 TEST_F(DSPTest, GetPitchA4) {
     const float A4 = 440.0f;
     size_t tau = get_pitch(a4_sig_cmndf);
-    ASSERT_EQ(tau, static_cast<size_t>(std::round(SR / A4)));
+    EXPECT_EQ(tau, static_cast<size_t>(std::round(SR / A4)));
 }
 
 TEST_F(DSPTest, GetPitchDC) {
@@ -124,7 +127,7 @@ TEST_F(DSPTest, GetPitchDC) {
 
     size_t tau = get_pitch(dc_sig);
 
-    ASSERT_EQ(tau, 0);
+    EXPECT_EQ(tau, 0);
 }
 
 TEST_F(DSPTest, ParabolicInterpA4) {
@@ -137,21 +140,21 @@ TEST_F(DSPTest, ParabolicInterpA4) {
     const float cents_diff = 1200.0f * std::abs(std::log2(freq / A4));
 
     // Must be within 0.5 cents of 440Hz
-    ASSERT_NEAR(cents_diff, 0.0f, 0.5f);
+    EXPECT_NEAR(cents_diff, 0.0f, 0.5f);
 }
 
 TEST_F(DSPTest, ParabolicInterpSymmetric) {
     float32_t cmndf[TAU_MAX] = {2.0f, 1.0f, 2.0f};
     float32_t tauf = parabolic_interp(cmndf, 1);
 
-    ASSERT_NEAR(tauf, 1.0f, abs_error);
+    EXPECT_NEAR(tauf, 1.0f, abs_error);
 }
 
 TEST_F(DSPTest, ParabolicInterpRightShift) {
     float32_t cmndf[TAU_MAX] = {3.0f, 1.0f, 1.5f};
     float32_t tauf = parabolic_interp(cmndf, 1);
 
-    ASSERT_NEAR(tauf, 1.3f, abs_error);
+    EXPECT_NEAR(tauf, 1.3f, abs_error);
 }
 
 extern const float32_t a4_sig[BUFFER_SIZE] = {
