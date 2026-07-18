@@ -16,6 +16,7 @@
 #############################################################################################################################
 cmake_minimum_required(VERSION 3.20)
 option(BUILD_TESTING "Build unit tests on host machine" OFF)
+set(LOG_LEVEL "LOG_LEVEL_TRACE" CACHE STRING "Set the firmware logging level")
 
 ###################### CONSTANTS ######################################
 set (PROJECT_TYPE_EXECUTABLE          "exe")
@@ -133,6 +134,8 @@ if(BUILD_TESTING)
   enable_testing()
   add_subdirectory(tests)
 else()
+  add_compile_definitions(LOG_LEVEL=${LOG_LEVEL})
+
   if (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_EXECUTABLE})
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
     add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
