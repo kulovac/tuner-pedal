@@ -97,7 +97,11 @@ cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]) {
 
     df[0] = 1;
     for (size_t i = 1; i < TAU_MAX; ++i) {
-        df[i] = df[i] * i / difference_sum[i];
+        if (difference_sum[i] > 0.00001f) {
+            df[i] = df[i] * i / difference_sum[i];
+        } else {
+            df[i] = 1.0f; // YIN paper standard for zero-force
+        }
     }
 }
 
