@@ -24,7 +24,8 @@
 
 static arm_rfft_fast_instance_f32 rfft;
 
-static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]);
+static void difference_function(const float32_t frame[W_LEN],
+                                float32_t df[TAU_MAX]);
 static void cumsum_f32(float32_t *pSrc, float32_t *pDst, size_t src_len);
 static size_t get_pitch(float32_t cmdf[TAU_MAX]);
 static float32_t parabolic_interp(float32_t cmdf[TAU_MAX], size_t tau);
@@ -55,7 +56,8 @@ static void cumsum_f32(float32_t *pSrc, float32_t *pDst, size_t src_len) {
         pDst[i + 1] = pDst[i] + pSrc[i];
 }
 
-static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]) {
+static void difference_function(const float32_t frame[W_LEN],
+                                float32_t df[TAU_MAX]) {
     float32_t mult[W_LEN];
     arm_mult_f32(frame, frame, mult, W_LEN);
 
