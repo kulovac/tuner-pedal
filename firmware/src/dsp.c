@@ -27,7 +27,7 @@ static arm_rfft_fast_instance_f32 rfft;
 static void difference_function(const float32_t frame[W_LEN],
                                 float32_t df[TAU_MAX]);
 static void cumsum_f32(float32_t *pSrc, float32_t *pDst, size_t src_len);
-static size_t get_pitch(float32_t cmdf[TAU_MAX]);
+static size_t get_pitch(const float32_t cmndf[TAU_MAX]);
 static float32_t parabolic_interp(float32_t cmdf[TAU_MAX], size_t tau);
 static void
 cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]);
@@ -105,12 +105,12 @@ cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]) {
     }
 }
 
-static size_t get_pitch(float32_t cmdf[TAU_MAX]) {
+static size_t get_pitch(const float32_t cmndf[TAU_MAX]) {
     size_t tau = TAU_MIN;
 
     while (tau < TAU_MAX) {
-        if (cmdf[tau] < HARMO_THRESH) {
-            while (tau + 1 < TAU_MAX && cmdf[tau + 1] < cmdf[tau]) {
+        if (cmndf[tau] < HARMO_THRESH) {
+            while (tau + 1 < TAU_MAX && cmndf[tau + 1] < cmndf[tau]) {
                 ++tau;
             }
             return tau;

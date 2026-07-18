@@ -111,6 +111,21 @@ TEST_F(DSPTest, CMNDF_DivByZero) {
     }
 }
 
+TEST_F(DSPTest, GetPitchA4) {
+    const float A4 = 440.0f;
+    size_t tau = get_pitch(a4_sig_cmndf);
+    ASSERT_EQ(tau, static_cast<size_t>(SR / A4));
+}
+
+TEST_F(DSPTest, GetPitchDC) {
+    float32_t dc_sig[TAU_MAX];
+    std::fill(std::begin(dc_sig), std::end(dc_sig), 1.0f);
+
+    size_t tau = get_pitch(dc_sig);
+
+    ASSERT_EQ(tau, 0);
+}
+
 extern const float32_t a4_sig[BUFFER_SIZE] = {
     0.0000000e+00,  1.7192911e-01,  3.3873793e-01,  4.9545866e-01,
     6.3742399e-01,  7.6040596e-01,  8.6074203e-01,  9.3544406e-01,
