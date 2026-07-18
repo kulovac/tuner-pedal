@@ -104,3 +104,6 @@ dkms.conf
 
 ## debug information files
 *.dwo
+
+# CMake files 
+build/

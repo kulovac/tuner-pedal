@@ -4,13 +4,18 @@
 #
 # usage: Edit "VARIABLES"-section to suit project requirements.
 #        For debug build:
-#          cmake -DCMAKE_TOOLCHAIN_FILE=cubeide-gcc.cmake  -S ./ -B Debug -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug
-#          make -C Debug VERBOSE=1 -j
+#          cmake -DCMAKE_TOOLCHAIN_FILE=cubeide-gcc.cmake  -S ./ -B build/Debug -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug
+#          make -C build/Debug VERBOSE=1 -j
 #        For release build:
-#          cmake -DCMAKE_TOOLCHAIN_FILE=cubeide-gcc.cmake  -S ./ -B Release -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
-#          make -C Release VERBOSE=1 -j
+#          cmake -DCMAKE_TOOLCHAIN_FILE=cubeide-gcc.cmake  -S ./ -B build/Release -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
+#          make -C build/Release VERBOSE=1 -j
+#        For testing build:
+#          cmake -DBUILD_TESTING=ON -S ./ -B build/Tests -G "Unix Makefiles"
+#          make -C build/Tests -j
+#          ctest --test-dir build/Tests --output-on-failure
 #############################################################################################################################
 cmake_minimum_required(VERSION 3.20)
+option(BUILD_TESTING "Build unit tests on host machine" OFF)
 
 ###################### CONSTANTS ######################################
 set (PROJECT_TYPE_EXECUTABLE          "exe")
@@ -38,7 +43,7 @@ set (MFLOAT_ABI_MIX                   "-mfloat-abi=softfp")
 ###################### VARIABLES ######################################
 set (PROJECT_NAME             "firmware")
 set (PROJECT_TYPE             "exe")
-set (LINKER_SCRIPT            "../STM32F411CEUX_FLASH.ld")
+set (LINKER_SCRIPT            "../../STM32F411CEUX_FLASH.ld")
 set (MCPU                     "-mcpu=cortex-m4") # Fixed capitalization just in case
 set (MFPU                 "-mfpu=fpv4-sp-d16")
 set (MFLOAT_ABI               "-mfloat-abi=hard") # Set to hard since F411 has an FPU
@@ -75,8 +80,6 @@ set (PROJECT_INCLUDES
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ############ MODIFY ACCORDING TO REQUIREMENTS) ########################
-add_compile_definitions(LOG_LEVEL=LOG_LEVEL_TRACE)
-
 set(stm32f4_drivers_SOURCE_DIR 
 	"${CMAKE_CURRENT_SOURCE_DIR}/libs/stm32f4xx-hal-driver"
 )
@@ -126,18 +129,23 @@ list(APPEND PROJECT_INCLUDES
 #######################################################################
 
 ################## PROJECT SETUP ######################################
-if (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_EXECUTABLE})
-  add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
-  add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
-elseif (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_STATIC_LIBRARY})
-  add_library(${PROJECT_NAME} ${PROJECT_SOURCES})
+if(BUILD_TESTING)
+  enable_testing()
+  add_subdirectory(tests)
+else()
+  if (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_EXECUTABLE})
+    add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+    add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
+  elseif (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_STATIC_LIBRARY})
+    add_library(${PROJECT_NAME} ${PROJECT_SOURCES})
+  endif()
+
+  add_compile_definitions (${PROJECT_DEFINES})
+  include_directories (${PROJECT_INCLUDES})
+
+  set (CMAKE_EXECUTABLE_SUFFIX ".elf")
+  set (CMAKE_STATIC_LIBRARY_SUFFIX ".a")
+  set (CMAKE_C_FLAGS "${MCPU} -std=gnu11 ${MFPU} ${MFLOAT_ABI} ${RUNTIME_LIBRARY} -mthumb -Wall -Werror -Werror=vla -ffunction-sections -fdata-sections")
+  set (CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT} ${RUNTIME_LIBRARY_SYSCALLS} -Wl,-Map=test.map -Wl,--gc-sections -static -Wl,--start-group -lc -lm -Wl,--end-group")
+  set (CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -x assembler-with-cpp")
 endif()
-
-add_compile_definitions (${PROJECT_DEFINES})
-include_directories (${PROJECT_INCLUDES})
-
-set (CMAKE_EXECUTABLE_SUFFIX ".elf")
-set (CMAKE_STATIC_LIBRARY_SUFFIX ".a")
-set (CMAKE_C_FLAGS "${MCPU} -std=gnu11 ${MFPU} ${MFLOAT_ABI} ${RUNTIME_LIBRARY} -mthumb -Wall -Werror -Werror=vla -ffunction-sections -fdata-sections")
-set (CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT} ${RUNTIME_LIBRARY_SYSCALLS} -Wl,-Map=test.map -Wl,--gc-sections -static -Wl,--start-group -lc -lm -Wl,--end-group")
-set (CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -x assembler-with-cpp")
