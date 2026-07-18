@@ -1,5 +1,10 @@
 CompileFlags:
-  CompilationDatabase: build/Tests
+  CompilationDatabase: build/Debug
 Documentation:
   CommentFormat: Doxygen
 
+---
+If:
+  PathMatch: tests/.*|build/Tests/.*
+CompileFlags:
+  CompilationDatabase: build/Tests
