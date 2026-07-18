@@ -1,4 +1,3 @@
-#include "arm_math.h"
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -12,6 +11,8 @@ extern "C" {
 extern const float32_t a4_sig[BUFFER_SIZE];
 extern const float32_t a4_sig_diff[TAU_MAX];
 
+const float abs_error = 0.0005f;
+
 class DSPTest : public ::testing::Test {
   protected:
     void SetUp() override { init_dsp(); }
@@ -20,7 +21,8 @@ class DSPTest : public ::testing::Test {
 
 TEST_F(DSPTest, CumulativeSum) {
     float32_t pSrc[5] = {1, 2, 3, 4, 5};
-    float32_t pDest[6] = {NAN};
+    float32_t pDest[6];
+    std::fill(std::begin(pDest), std::end(pDest), NAN);
     cumsum_f32(pSrc, pDest, 5);
 
     ASSERT_EQ(pDest[0], 0.0f);
@@ -40,6 +42,35 @@ TEST_F(DSPTest, DifferenceFunctionA4) {
 
     for (size_t i = 0; i < TAU_MAX; ++i) {
         ASSERT_NEAR(diff[i], a4_sig_diff[i], max / 10000.0f);
+    }
+}
+
+TEST_F(DSPTest, DifferenceFunctionDC) {
+    float32_t dc_sig[BUFFER_SIZE];
+    std::fill(std::begin(dc_sig), std::end(dc_sig), 1.0f);
+
+    float32_t diff[TAU_MAX];
+    std::fill(std::begin(diff), std::end(diff), NAN);
+
+    difference_function(dc_sig, diff);
+
+    for (size_t i = 0; i < TAU_MAX; ++i) {
+        ASSERT_NEAR(diff[i], 0.0f, abs_error);
+    }
+}
+
+TEST_F(DSPTest, DifferenceFunctionImpulse) {
+    const float32_t amplitude = 2.0f;
+    float32_t impulse_sig[BUFFER_SIZE] = {amplitude};
+
+    float32_t diff[TAU_MAX];
+    std::fill(std::begin(diff), std::end(diff), NAN);
+
+    difference_function(impulse_sig, diff);
+
+    ASSERT_NEAR(diff[0], 0.0f, abs_error);
+    for (size_t i = 1; i < TAU_MAX; ++i) {
+        ASSERT_NEAR(diff[i], amplitude * amplitude, abs_error);
     }
 }
 
