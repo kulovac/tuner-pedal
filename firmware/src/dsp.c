@@ -64,7 +64,7 @@ static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]) {
 
     arm_mult_f32(frame, frame, frame, W_LEN);
 
-    float32_t sum[W_LEN + 1];
+    static float32_t sum[W_LEN + 1];
     cumsum_f32(frame, sum, W_LEN);
 
     // Forward RFFT: Time domain (buf_a) -> Frequency domain (buf_b)
@@ -98,7 +98,7 @@ static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]) {
 
 static void
 cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]) {
-    float32_t difference_sum[TAU_MAX];
+    static float32_t difference_sum[TAU_MAX];
     cumsum_f32(df + 1, difference_sum, TAU_MAX - 1);
 
     df[0] = 1;
