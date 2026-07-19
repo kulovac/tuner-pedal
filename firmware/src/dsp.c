@@ -50,7 +50,7 @@ float compute_yin(float32_t sig[BUFFER_SIZE]) {
     return (float32_t)SR / tauf;
 }
 
-static void cumsum_f32(float32_t *pSrc, float32_t *pDst, size_t src_len) {
+static void cumsum_f32(const float32_t *pSrc, float32_t *pDst, size_t src_len) {
     pDst[0] = 0;
     for (size_t i = 0; i < src_len; ++i)
         pDst[i + 1] = pDst[i] + pSrc[i];
