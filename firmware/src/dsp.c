@@ -24,8 +24,7 @@
 
 static arm_rfft_fast_instance_f32 rfft;
 
-static void difference_function(const float32_t frame[W_LEN],
-                                float32_t df[TAU_MAX]);
+static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]);
 static void cumsum_f32(const float32_t *pSrc, float32_t *pDst, size_t src_len);
 static size_t get_pitch(const float32_t cmndf[TAU_MAX]);
 static float32_t parabolic_interp(const float32_t cmndf[TAU_MAX], size_t tau);
@@ -56,37 +55,44 @@ static void cumsum_f32(const float32_t *pSrc, float32_t *pDst, size_t src_len) {
         pDst[i + 1] = pDst[i] + pSrc[i];
 }
 
-static void difference_function(const float32_t frame[W_LEN],
-                                float32_t df[TAU_MAX]) {
-    float32_t mult[W_LEN];
-    arm_mult_f32(frame, frame, mult, W_LEN);
+static void difference_function(float32_t frame[W_LEN], float32_t df[TAU_MAX]) {
+    static float32_t buf_a[FFT_LEN];
+    static float32_t buf_b[FFT_LEN];
+
+    arm_copy_f32(frame, buf_a, W_LEN);
+    arm_fill_f32(0.0f, buf_a + W_LEN, FFT_LEN - W_LEN);
+
+    arm_mult_f32(frame, frame, frame, W_LEN);
 
     float32_t sum[W_LEN + 1];
-    cumsum_f32(mult, sum, W_LEN);
+    cumsum_f32(frame, sum, W_LEN);
 
-    float32_t sig_padded[FFT_LEN] = {0};
-    for (size_t i = 0; i < W_LEN; ++i) {
-        sig_padded[i] = frame[i];
+    // Forward RFFT: Time domain (buf_a) -> Frequency domain (buf_b)
+    arm_rfft_fast_f32(&rfft, buf_a, buf_b, 0);
+
+    // Autocorrelation via Power Spectrum:
+    // X(f) * conj(X(f)) = |X(f)|^2
+    // DC (index 0) and Nyquist (index 1) are
+    // strictly real in packed RFFT format
+    buf_b[0] = buf_b[0] * buf_b[0];
+    buf_b[1] = buf_b[1] * buf_b[1];
+
+    // Complex frequency bins: (re + j*im) * (re - j*im) = (re^2 + im^2) + j*0
+    for (size_t i = 2; i < FFT_LEN; i += 2) {
+        float32_t re = buf_b[i];
+        float32_t im = buf_b[i + 1];
+        buf_b[i] = re * re + im * im; // Real part becomes magnitude squared
+        buf_b[i + 1] = 0.0f;          // Imaginary part is strictly zero
     }
 
-    float32_t fc[FFT_LEN];
-    arm_rfft_fast_f32(&rfft, sig_padded, fc, 0);
+    // Inverse RFFT:
+    // Frequency domain (buf_b) -> Autocorrelation time domain (buf_a)
+    arm_rfft_fast_f32(&rfft, buf_b, buf_a, 1);
 
-    float32_t fc_conj[FFT_LEN];
-    fc_conj[0] = fc[0];
-    fc_conj[1] = fc[1];
-    arm_cmplx_conj_f32(fc + 2, fc_conj + 2, W_LEN - 1);
-
-    float32_t fft_conv[FFT_LEN] = {0};
-    arm_mult_f32(fc, fc_conj, fft_conv, 2);
-    arm_cmplx_mult_cmplx_f32(fc + 2, fc_conj + 2, fft_conv + 2, W_LEN - 1);
-
-    // XXX: The actual length is TAU_MAX
-    float32_t conv[FFT_LEN];
-    arm_rfft_fast_f32(&rfft, fft_conv, conv, 1);
-
+    // Calculate final Squared Difference Function
+    const float32_t sum_total = sum[W_LEN];
     for (size_t i = 0; i < TAU_MAX; ++i) {
-        df[i] = sum[W_LEN - i] + sum[W_LEN] - sum[i] - 2 * conv[i];
+        df[i] = sum[W_LEN - i] + sum_total - sum[i] - (2.0f * buf_a[i]);
     }
 }
 

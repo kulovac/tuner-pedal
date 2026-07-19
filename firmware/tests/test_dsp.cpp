@@ -37,7 +37,9 @@ TEST_F(DSPTest, CumulativeSum) {
 
 TEST_F(DSPTest, DifferenceFunctionA4) {
     float32_t diff[TAU_MAX];
-    difference_function(a4_sig, diff);
+    float32_t copy_a4_sig[BUFFER_SIZE];
+    std::copy(std::begin(a4_sig), std::end(a4_sig), copy_a4_sig);
+    difference_function(copy_a4_sig, diff);
 
     float32_t max =
         *std::max_element(std::begin(a4_sig_diff), std::end(a4_sig_diff));
