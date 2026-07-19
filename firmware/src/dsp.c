@@ -43,7 +43,12 @@ float compute_yin(float32_t sig[BUFFER_SIZE]) {
     float32_t df[TAU_MAX];
     difference_function(sig, df);
     cumulative_mean_normalized_difference_function(df);
+
     size_t tau = get_pitch(df);
+    if (tau == 0) {
+        return 0.0f;
+    }
+
     float32_t tauf = parabolic_interp(df, tau);
 
     return (float32_t)SR / tauf;
