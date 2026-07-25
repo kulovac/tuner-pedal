@@ -13,6 +13,7 @@
 
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
+static void log_freq(float buffer[BUFFER_SIZE]);
 
 int main(void) {
     bsp_init();
@@ -52,22 +53,26 @@ int main(void) {
             buffer[i] = (float)left;
         }
 
-        float freq = compute_yin(buffer);
-        float cents = cents_diff(freq);
-        const char *note = get_note(freq);
-
-        int32_t freq_scaled = (int32_t)lroundf(freq * 100.0f);
-        int32_t cents_scaled = (int32_t)lroundf(cents * 100.0f);
-
-        char cents_sign = (cents_scaled < 0) ? '-' : '+';
-        int32_t cents_abs = abs(cents_scaled);
-
-        log_info("Recorded freq: %d.%02d\tNote: %s\tCents: %c%d.%02d",
-                 freq_scaled / 100, freq_scaled % 100, note, cents_sign,
-                 cents_abs / 100, cents_abs % 100);
+        log_freq(buffer);
     }
 
     error_handler();
+}
+
+static void log_freq(float buffer[BUFFER_SIZE]) {
+    float freq = compute_yin(buffer);
+    float cents = cents_diff(freq);
+    const char *note = get_note(freq);
+
+    int32_t freq_scaled = (int32_t)lroundf(freq * 100.0f);
+    int32_t cents_scaled = (int32_t)lroundf(cents * 100.0f);
+
+    char cents_sign = (cents_scaled < 0) ? '-' : '+';
+    int32_t cents_abs = abs(cents_scaled);
+
+    log_info("Recorded freq: %d.%02d\tNote: %s\tCents: %c%d.%02d",
+             freq_scaled / 100, freq_scaled % 100, note, cents_sign,
+             cents_abs / 100, cents_abs % 100);
 }
 
 static bool collect_sample(int32_t *val, enum CHSIDE ch) {
