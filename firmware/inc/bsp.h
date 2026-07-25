@@ -18,6 +18,18 @@
 #define ADC_I2S_SD_PIN LL_GPIO_PIN_7
 #define ADC_I2S_AF LL_GPIO_AF_5
 
+#define TFT_SPI SPI2
+#define TFT_SPI_PORT GPIOB
+#define TFT_SPI_SCK_PIN LL_GPIO_PIN_10
+#define TFT_SPI_MOSI_PIN LL_GPIO_PIN_15
+#define TFT_SPI_AF LL_GPIO_AF_5
+#define TFT_SPI_CS_PIN LL_GPIO_PIN_1
+#define TFT_SPI_DC_PIN LL_GPIO_PIN_0
+#define TFT_BL_PORT GPIOA
+#define TFT_BL_PIN LL_GPIO_PIN_1
+#define TFT_RT_PORT GPIOA
+#define TFT_RT_PIN LL_GPIO_PIN_6
+
 void bsp_init(void);
 
 enum CHSIDE { CHLEFT = 0, CHRIGHT = 1 };

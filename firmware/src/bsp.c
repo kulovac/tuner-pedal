@@ -16,6 +16,8 @@ void bsp_init(void) {
 
     LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
     LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SPI1);
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
+    LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI2);
 
     // TODO: Refactor these inits into static helpers
 
@@ -46,6 +48,42 @@ void bsp_init(void) {
                               .ClockPolarity = LL_I2S_POLARITY_LOW};
     LL_I2S_Init(ADC_I2S, &i2s);
     LL_I2S_Enable(ADC_I2S);
+
+    // TFT Display
+    LL_GPIO_InitTypeDef spi_pins = {.Pin = TFT_SPI_MOSI_PIN | TFT_SPI_SCK_PIN,
+                                    .Mode = LL_GPIO_MODE_ALTERNATE,
+                                    .Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH,
+                                    .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
+                                    .Pull = LL_GPIO_PULL_NO,
+                                    .Alternate = TFT_SPI_AF};
+    LL_GPIO_InitTypeDef spi_ctl_pins = {.Pin = TFT_SPI_CS_PIN | TFT_SPI_DC_PIN,
+                                        .Mode = LL_GPIO_MODE_OUTPUT,
+                                        .Speed = LL_GPIO_SPEED_FREQ_MEDIUM,
+                                        .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
+                                        .Pull = LL_GPIO_PULL_NO,
+                                        .Alternate = LL_GPIO_AF_0};
+    LL_GPIO_InitTypeDef tft_ctl_pins = {.Pin = TFT_BL_PIN | TFT_RT_PIN,
+                                        .Mode = LL_GPIO_MODE_OUTPUT,
+                                        .Speed = LL_GPIO_SPEED_FREQ_LOW,
+                                        .OutputType = LL_GPIO_OUTPUT_PUSHPULL,
+                                        .Pull = LL_GPIO_PULL_NO,
+                                        .Alternate = LL_GPIO_AF_0};
+    LL_GPIO_Init(TFT_SPI_PORT, &spi_pins);
+    LL_GPIO_Init(TFT_SPI_PORT, &spi_ctl_pins);
+    LL_GPIO_Init(TFT_BL_PORT, &tft_ctl_pins);
+
+    LL_SPI_InitTypeDef spi = {.TransferDirection = LL_SPI_FULL_DUPLEX,
+                              .Mode = LL_SPI_MODE_MASTER,
+                              .DataWidth = LL_SPI_DATAWIDTH_8BIT,
+                              .ClockPolarity = LL_SPI_POLARITY_LOW,
+                              .ClockPhase = LL_SPI_PHASE_1EDGE,
+                              .NSS = LL_SPI_NSS_SOFT,
+                              .BaudRate = LL_SPI_BAUDRATEPRESCALER_DIV256,
+                              .BitOrder = LL_SPI_MSB_FIRST,
+                              .CRCCalculation = LL_SPI_CRCCALCULATION_DISABLE,
+                              .CRCPoly = 0x0};
+    LL_SPI_Init(TFT_SPI, &spi);
+    LL_SPI_Enable(TFT_SPI);
 }
 
 static void clock_init(void) {
