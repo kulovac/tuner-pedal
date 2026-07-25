@@ -1,6 +1,7 @@
 #include "dsp.h"
 #include "log.h"
 #include <arm_math.h>
+#include <math.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -21,6 +22,7 @@
 #define TAU_MIN (SR / F0_MAX)
 // Size of the FFT buffer (W_LEN + TAU_MAX)
 #define FFT_LEN (2 * W_LEN)
+#define A4_FREQ 440.0f
 
 static arm_rfft_fast_instance_f32 rfft;
 
@@ -35,6 +37,54 @@ void init_dsp(void) {
     // TODO: Finalize the buffer length `BUFFER_SIZE`
     arm_status status = arm_rfft_fast_init_f32(&rfft, FFT_LEN);
     log_assert(status == ARM_MATH_SUCCESS, "Failed to init dsp unit");
+}
+
+inline float32_t cents_diff(float32_t freq) {
+    return remainderf(1200.0f * log2f(freq / A4_FREQ), 100.0f);
+}
+
+// TODO: return an enum over a string
+char *get_note(float freq) {
+    if (freq <= 0.0f) {
+        return "-"; // Unvoiced / Silence
+    }
+
+    int semitones_from_a4 = (int)lroundf(12.0f * log2f(freq / A4_FREQ));
+
+    // Map to a 0-11 pitch class (where C = 0, A = 9)
+    // We add 21 (9 for A, plus 12) before the second modulo to guarantee
+    // positive results when dealing with negative C integer division in lower
+    // octaves.
+    int note_index = (semitones_from_a4 % 12 + 21) % 12;
+
+    switch (note_index) {
+    case 0:
+        return "C";
+    case 1:
+        return "C#";
+    case 2:
+        return "D";
+    case 3:
+        return "D#";
+    case 4:
+        return "E";
+    case 5:
+        return "F";
+    case 6:
+        return "F#";
+    case 7:
+        return "G";
+    case 8:
+        return "G#";
+    case 9:
+        return "A";
+    case 10:
+        return "A#";
+    case 11:
+        return "B";
+    default:
+        return "-";
+    }
 }
 
 float compute_yin(float32_t sig[BUFFER_SIZE]) {

@@ -5,9 +5,11 @@
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
 #include "system_stm32f4xx.h"
+#include <math.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
@@ -51,9 +53,18 @@ int main(void) {
         }
 
         float freq = compute_yin(buffer);
-        int32_t freq_scaled = (int32_t)(freq * 100.0f + 0.5f);
-        log_info("Recorded freq: %d.%02d", freq_scaled / 100,
-                 freq_scaled % 100);
+        float cents = cents_diff(freq);
+        const char *note = get_note(freq);
+
+        int32_t freq_scaled = (int32_t)lroundf(freq * 100.0f);
+        int32_t cents_scaled = (int32_t)lroundf(cents * 100.0f);
+
+        char cents_sign = (cents_scaled < 0) ? '-' : '+';
+        int32_t cents_abs = abs(cents_scaled);
+
+        log_info("Recorded freq: %d.%02d\tNote: %s\tCents: %c%d.%02d",
+                 freq_scaled / 100, freq_scaled % 100, note, cents_sign,
+                 cents_abs / 100, cents_abs % 100);
     }
 
     error_handler();
