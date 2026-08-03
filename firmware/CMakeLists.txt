@@ -62,6 +62,7 @@ set(PROJECT_SOURCES
 	src/log.c
 	src/bsp.c
 	src/dsp.c
+	src/tft.c
 )
 
 set(PROJECT_DEFINES
