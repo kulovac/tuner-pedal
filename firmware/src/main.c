@@ -5,6 +5,7 @@
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
 #include "system_stm32f4xx.h"
+#include "tft.h"
 #include <math.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -19,6 +20,7 @@ int main(void) {
     bsp_init();
     init_logger();
     init_dsp();
+    init_display();
 
     LL_GPIO_SetOutputPin(STATUS_LED_PORT, STATUS_LED_PIN);
 
@@ -29,6 +31,10 @@ int main(void) {
     log_error("entering test %d", 5);
 
     float buffer[BUFFER_SIZE];
+
+    tft_clear_screen(TFT_BLACK);
+    tft_draw_string(5, 5, "A#", TFT_WHITE, TFT_BLACK, 4);
+    tft_draw_string(5, 50, "+20 cts", TFT_WHITE, TFT_BLACK, 2);
 
     /* Loop forever */
     for (;;) {
