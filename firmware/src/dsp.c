@@ -59,31 +59,31 @@ char *get_note(float freq) {
 
     switch (note_index) {
     case 0:
-        return "C";
+        return "C ";
     case 1:
         return "C#";
     case 2:
-        return "D";
+        return "D ";
     case 3:
         return "D#";
     case 4:
-        return "E";
+        return "E ";
     case 5:
-        return "F";
+        return "F ";
     case 6:
         return "F#";
     case 7:
-        return "G";
+        return "G ";
     case 8:
         return "G#";
     case 9:
-        return "A";
+        return "A ";
     case 10:
         return "A#";
     case 11:
-        return "B";
+        return "B ";
     default:
-        return "-";
+        return "- ";
     }
 }
 
