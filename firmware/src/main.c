@@ -10,11 +10,12 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
-static void log_freq(float buffer[BUFFER_SIZE]);
+static void display_tuning(float freq, float cents, const char *note);
 
 int main(void) {
     bsp_init();
@@ -33,8 +34,6 @@ int main(void) {
     float buffer[BUFFER_SIZE];
 
     tft_clear_screen(TFT_BLACK);
-    tft_draw_string(5, 5, "A#", TFT_WHITE, TFT_BLACK, 4);
-    tft_draw_string(5, 50, "+20 cts", TFT_WHITE, TFT_BLACK, 2);
 
     /* Loop forever */
     for (;;) {
@@ -59,26 +58,36 @@ int main(void) {
             buffer[i] = (float)left;
         }
 
-        log_freq(buffer);
+        float freq = compute_yin(buffer);
+        float cents = cents_diff(freq);
+        const char *note = get_note(freq);
+        display_tuning(freq, cents, note);
+
+        log_info("Recorded freq: %d.%02d \t Note: %s \t Cents: %c%d.%02d",
+                 (int32_t)lroundf(freq * 100.0f) / 100,
+                 (int32_t)lroundf(freq * 100.0f) % 100, note,
+                 ((int32_t)lroundf(cents * 100.0f) < 0) ? '-' : '+',
+                 abs((int32_t)lroundf(cents * 100.0f)) / 100,
+                 abs((int32_t)lroundf(cents * 100.0f)) % 100);
     }
 
     error_handler();
 }
 
-static void log_freq(float buffer[BUFFER_SIZE]) {
-    float freq = compute_yin(buffer);
-    float cents = cents_diff(freq);
-    const char *note = get_note(freq);
+static void display_tuning(float freq, float cents, const char *note) {
+    static const char *prev_note = NULL;
+    char cents_str[16];
 
-    int32_t freq_scaled = (int32_t)lroundf(freq * 100.0f);
-    int32_t cents_scaled = (int32_t)lroundf(cents * 100.0f);
+    char cents_sign = ((int32_t)lroundf(cents * 100.0f) < 0) ? '-' : '+';
+    int32_t cents_scaled = abs((int32_t)lroundf(cents * 100.0f));
+    snprintf(cents_str, 16, "%c%ld.%02ld", cents_sign, cents_scaled / 100,
+             cents_scaled % 100);
 
-    char cents_sign = (cents_scaled < 0) ? '-' : '+';
-    int32_t cents_abs = abs(cents_scaled);
-
-    log_info("Recorded freq: %d.%02d\tNote: %s\tCents: %c%d.%02d",
-             freq_scaled / 100, freq_scaled % 100, note, cents_sign,
-             cents_abs / 100, cents_abs % 100);
+    if (prev_note != note) {
+        tft_draw_string(5, 5, note, TFT_WHITE, TFT_BLACK, 4);
+        prev_note = note;
+    }
+    tft_draw_string(5, 50, cents_str, TFT_WHITE, TFT_BLACK, 2);
 }
 
 static bool collect_sample(int32_t *val, enum CHSIDE ch) {
