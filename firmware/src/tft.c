@@ -1,6 +1,5 @@
 #include "tft.h"
 #include "bsp.h"
-#include "fonts.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
@@ -42,7 +41,7 @@ static void tft_write_data8(uint8_t data) {
 }
 
 // Send a 16-bit RGB565 Color word (MSB first)
-static void tft_write_data16(uint16_t data) {
+void tft_write_data16(uint16_t data) {
     while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
         ;
     LL_GPIO_SetOutputPin(TFT_SPI_PORT, TFT_SPI_DC_PIN); // DC HIGH (Data)
@@ -61,49 +60,6 @@ void tft_set_window(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1) {
     tft_write_data16(y1 + 1);
 
     tft_write_cmd(RAMWR); // Prepare to receive color data
-}
-
-/**
- * Draws a single 8x8 character
- * @param x         Top-left X position
- * @param y         Top-left Y position
- * @param c         ASCII character
- * @param fg_color  Text color (RGB565)
- * @param bg_color  Background color (RGB565)
- * @param scale     Sizing factor
- */
-void tft_draw_char(uint16_t x, uint16_t y, char c, uint16_t fg_color,
-                   uint16_t bg_color, uint8_t scale) {
-    uint16_t char_idx = c * 8;
-
-    tft_set_window(x, y, x + (8 * scale) - 1, y + (8 * scale) - 1);
-
-    // Stream pixels row by row
-    for (uint8_t row = 0; row < 8; ++row) {
-        uint8_t bitmask = console_font_8x8[char_idx + row];
-
-        for (uint8_t sy = 0; sy < scale; ++sy) {
-            for (uint8_t col = 0; col < 8; ++col) {
-                uint16_t color =
-                    (bitmask & (0x80 >> col)) ? fg_color : bg_color;
-                for (uint8_t sx = 0; sx < scale; ++sx) {
-                    tft_write_data16(color);
-                }
-            }
-        }
-    }
-}
-
-/**
- * Draws a null-terminated string
- */
-void tft_draw_string(uint16_t x, uint16_t y, const char *str, uint16_t fg_color,
-                     uint16_t bg_color, uint8_t scale) {
-    while (*str) {
-        tft_draw_char(x, y, *str, fg_color, bg_color, scale);
-        x += scale * 8; // Advance cursor right by one char
-        ++str;
-    }
 }
 
 void tft_clear_screen(uint16_t color, uint16_t x0, uint16_t y0, uint16_t x1,

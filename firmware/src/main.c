@@ -1,5 +1,6 @@
 #include "bsp.h"
 #include "dsp.h"
+#include "gfx.h"
 #include "log.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_spi.h"
@@ -13,6 +14,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define NOTE_SCALE 4
+#define NOTE_W (8 * 2 * NOTE_SCALE)
+#define NOTE_H (8 * NOTE_SCALE)
+#define CENT_SCALE 3
+#define CENT_W (8 * 3 * CENT_SCALE)
+#define CENT_H (8 * CENT_SCALE)
 
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
@@ -34,7 +42,7 @@ int main(void) {
 
     float buffer[BUFFER_SIZE];
 
-    tft_clear_screen(TFT_BLACK, 0, 0, TFT_WIDTH - 1, TFT_HEIGHT - 1);
+    tft_clear_screen(GFX_COLOR_BLACK, 0, 0, TFT_WIDTH - 1, TFT_HEIGHT - 1);
 
     /* Loop forever */
     for (;;) {
@@ -76,19 +84,22 @@ int main(void) {
 }
 
 static void display_tuning(float freq, float cents, const char *note) {
+    static uint16_t note_buf[NOTE_W * NOTE_H];
+    static uint16_t cent_buf[CENT_W * CENT_H];
     static const char *prev_note = NULL;
     static int8_t prev_cents = INT8_MAX;
 
     int8_t rounded_cents = (int8_t)lroundf(cents);
 
     if (prev_note != note) {
-        // x0 to draw middle of screen is WIDTH - chars * 4x * 8px
-        tft_clear_screen(TFT_BLACK, (TFT_WIDTH - 2 * 4 * 8) / 2,
-                         TFT_HEIGHT / 2 - 4 * 8 - 6,
-                         (TFT_WIDTH + 2 * 4 * 8) / 2, TFT_HEIGHT / 2 - 6);
-        tft_draw_string((TFT_WIDTH - strlen(note) * 4 * 8) / 2,
-                        TFT_HEIGHT / 2 - 4 * 8 - 6, note, TFT_WHITE, TFT_BLACK,
-                        4);
+        gfx_render_string_centered(note_buf, NOTE_W, NOTE_H, note,
+                                   GFX_COLOR_WHITE, GFX_COLOR_BLACK,
+                                   NOTE_SCALE);
+
+        const uint16_t x0 = (TFT_WIDTH - 2 * NOTE_SCALE * 8) / 2;
+        const uint16_t y0 = TFT_HEIGHT / 2 - NOTE_SCALE * 8 - 6;
+        gfx_draw(note_buf, x0, y0, x0 + NOTE_W - 1, y0 + NOTE_H - 1);
+
         prev_note = note;
     }
 
@@ -96,8 +107,13 @@ static void display_tuning(float freq, float cents, const char *note) {
         char cents_str[16];
         snprintf(cents_str, 16, "%+hd", rounded_cents);
 
-        tft_draw_string((TFT_WIDTH - strlen(cents_str) * 3 * 8) / 2,
-                        TFT_HEIGHT / 2 + 6, cents_str, TFT_WHITE, TFT_BLACK, 3);
+        gfx_render_string_centered(cent_buf, CENT_W, CENT_H, cents_str,
+                                   GFX_COLOR_WHITE, GFX_COLOR_BLACK,
+                                   CENT_SCALE);
+
+        const uint16_t x0 = (TFT_WIDTH - 3 * CENT_SCALE * 8) / 2;
+        const uint16_t y0 = TFT_HEIGHT / 2 + 6;
+        gfx_draw(cent_buf, x0, y0, x0 + CENT_W - 1, y0 + CENT_H - 1);
 
         prev_cents = rounded_cents;
     }
