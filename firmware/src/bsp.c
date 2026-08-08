@@ -80,7 +80,7 @@ void bsp_init(void) {
                               .ClockPolarity = LL_SPI_POLARITY_LOW,
                               .ClockPhase = LL_SPI_PHASE_1EDGE,
                               .NSS = LL_SPI_NSS_SOFT,
-                              .BaudRate = LL_SPI_BAUDRATEPRESCALER_DIV256,
+                              .BaudRate = LL_SPI_BAUDRATEPRESCALER_DIV2,
                               .BitOrder = LL_SPI_MSB_FIRST,
                               .CRCCalculation = LL_SPI_CRCCALCULATION_DISABLE,
                               .CRCPoly = 0x0};
