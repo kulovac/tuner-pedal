@@ -89,37 +89,44 @@ static void display_tuning(float freq, float cents, const char *note) {
     static const char *prev_note = NULL;
     static int8_t prev_cents = INT8_MAX;
 
-    int8_t rounded_cents = (int8_t)lroundf(cents);
+    static enum { NOTE, CENTS } state = NOTE;
 
-    if (prev_note != note) {
-        gfx_render_string_centered(note_buf, NOTE_W, NOTE_H, note,
-                                   GFX_COLOR_WHITE, GFX_COLOR_BLACK,
-                                   NOTE_SCALE);
+    if (!tft_is_ready())
+        return;
 
-        const uint16_t x0 = (TFT_WIDTH - 2 * NOTE_SCALE * 8) / 2;
-        const uint16_t y0 = TFT_HEIGHT / 2 - NOTE_SCALE * 8 - 6;
-        gfx_draw(note_buf, x0, y0, x0 + NOTE_W - 1, y0 + NOTE_H - 1);
-        while (!tft_is_ready())
-            ;
+    if (state == NOTE) {
+        if (prev_note != note) {
+            gfx_render_string_centered(note_buf, NOTE_W, NOTE_H, note,
+                                       GFX_COLOR_WHITE, GFX_COLOR_BLACK,
+                                       NOTE_SCALE);
 
-        prev_note = note;
-    }
+            const uint16_t x0 = (TFT_WIDTH - 2 * NOTE_SCALE * 8) / 2;
+            const uint16_t y0 = TFT_HEIGHT / 2 - NOTE_SCALE * 8 - 6;
+            gfx_draw(note_buf, x0, y0, x0 + NOTE_W - 1, y0 + NOTE_H - 1);
 
-    if (prev_cents != rounded_cents) {
-        char cents_str[16];
-        snprintf(cents_str, 16, "%+hd", rounded_cents);
+            prev_note = note;
+        }
 
-        gfx_render_string_centered(cent_buf, CENT_W, CENT_H, cents_str,
-                                   GFX_COLOR_WHITE, GFX_COLOR_BLACK,
-                                   CENT_SCALE);
+        state = CENTS;
+    } else if (state == CENTS) {
+        int8_t rounded_cents = (int8_t)lroundf(cents);
 
-        const uint16_t x0 = (TFT_WIDTH - 3 * CENT_SCALE * 8) / 2;
-        const uint16_t y0 = TFT_HEIGHT / 2 + 6;
-        gfx_draw(cent_buf, x0, y0, x0 + CENT_W - 1, y0 + CENT_H - 1);
-        while (!tft_is_ready())
-            ;
+        if (prev_cents != rounded_cents) {
+            char cents_str[16];
+            snprintf(cents_str, 16, "%+d", rounded_cents);
 
-        prev_cents = rounded_cents;
+            gfx_render_string_centered(cent_buf, CENT_W, CENT_H, cents_str,
+                                       GFX_COLOR_WHITE, GFX_COLOR_BLACK,
+                                       CENT_SCALE);
+
+            const uint16_t x0 = (TFT_WIDTH - 3 * CENT_SCALE * 8) / 2;
+            const uint16_t y0 = TFT_HEIGHT / 2 + 6;
+            gfx_draw(cent_buf, x0, y0, x0 + CENT_W - 1, y0 + CENT_H - 1);
+
+            prev_cents = rounded_cents;
+        }
+
+        state = NOTE;
     }
 }
 
