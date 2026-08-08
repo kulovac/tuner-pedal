@@ -99,6 +99,8 @@ static void display_tuning(float freq, float cents, const char *note) {
         const uint16_t x0 = (TFT_WIDTH - 2 * NOTE_SCALE * 8) / 2;
         const uint16_t y0 = TFT_HEIGHT / 2 - NOTE_SCALE * 8 - 6;
         gfx_draw(note_buf, x0, y0, x0 + NOTE_W - 1, y0 + NOTE_H - 1);
+        while (!tft_is_ready())
+            ;
 
         prev_note = note;
     }
@@ -114,6 +116,8 @@ static void display_tuning(float freq, float cents, const char *note) {
         const uint16_t x0 = (TFT_WIDTH - 3 * CENT_SCALE * 8) / 2;
         const uint16_t y0 = TFT_HEIGHT / 2 + 6;
         gfx_draw(cent_buf, x0, y0, x0 + CENT_W - 1, y0 + CENT_H - 1);
+        while (!tft_is_ready())
+            ;
 
         prev_cents = rounded_cents;
     }

@@ -1,6 +1,7 @@
 #include "bsp.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_ll_bus.h"
+#include "stm32f4xx_ll_dma.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_rcc.h"
 #include "stm32f4xx_ll_spi.h"
@@ -18,6 +19,7 @@ void bsp_init(void) {
     LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SPI1);
     LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
     LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI2);
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1);
 
     // TODO: Refactor these inits into static helpers
 
@@ -84,6 +86,29 @@ void bsp_init(void) {
                               .CRCPoly = 0x0};
     LL_SPI_Init(TFT_SPI, &spi);
     LL_SPI_Enable(TFT_SPI);
+
+    // SPI->TFT DMA
+    LL_DMA_InitTypeDef dma = {.Channel = TFT_SPI_DMA_CHANNEL,
+                              .PeriphOrM2MSrcAddress = (uint32_t)&(TFT_SPI->DR),
+                              .MemoryOrM2MDstAddress = 0,
+                              .Direction = LL_DMA_DIRECTION_MEMORY_TO_PERIPH,
+                              .Mode = LL_DMA_MODE_NORMAL,
+                              .PeriphOrM2MSrcIncMode =
+                                  LL_DMA_PERIPH_NOINCREMENT,
+                              .MemoryOrM2MDstIncMode = LL_DMA_MEMORY_INCREMENT,
+                              .PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_BYTE,
+                              .MemoryOrM2MDstDataSize = LL_DMA_MDATAALIGN_BYTE,
+                              .NbData = 0,
+                              .Priority = LL_DMA_PRIORITY_HIGH,
+                              .FIFOMode = LL_DMA_FIFOMODE_DISABLE};
+    LL_DMA_Init(TFT_SPI_DMA, TFT_SPI_DMA_STREAM, &dma);
+
+    LL_DMA_EnableIT_TC(TFT_SPI_DMA, TFT_SPI_DMA_STREAM);
+
+    NVIC_SetPriority(TFT_SPI_DMA_IRQn, 0);
+    NVIC_EnableIRQ(TFT_SPI_DMA_IRQn);
+
+    LL_SPI_EnableDMAReq_TX(TFT_SPI);
 }
 
 static void clock_init(void) {

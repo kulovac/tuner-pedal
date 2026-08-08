@@ -1,6 +1,7 @@
 #ifndef BSP_H
 #define BSP_H
 
+#include "stm32f4xx_ll_dma.h"
 #include "stm32f4xx_ll_gpio.h"
 
 #define STATUS_LED_PORT GPIOA
@@ -29,6 +30,11 @@
 #define TFT_BL_PIN LL_GPIO_PIN_1
 #define TFT_RT_PORT GPIOA
 #define TFT_RT_PIN LL_GPIO_PIN_6
+
+#define TFT_SPI_DMA DMA1
+#define TFT_SPI_DMA_STREAM LL_DMA_STREAM_4
+#define TFT_SPI_DMA_CHANNEL LL_DMA_CHANNEL_0
+#define TFT_SPI_DMA_IRQn DMA1_Stream4_IRQn
 
 void bsp_init(void);
 
