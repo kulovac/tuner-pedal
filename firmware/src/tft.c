@@ -36,24 +36,18 @@ static inline void tft_spi_tx(uint8_t data) {
 
 // Send a 1-byte Command (D/C pulled LOW)
 static void tft_write_cmd(uint8_t cmd) {
-    while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
-        ;
     LL_GPIO_ResetOutputPin(TFT_SPI_PORT, TFT_SPI_DC_PIN); // DC LOW (Command)
     tft_spi_tx(cmd);
 }
 
 // Send a 1-byte Data payload (D/C pulled HIGH)
 static void tft_write_data8(uint8_t data) {
-    while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
-        ;
     LL_GPIO_SetOutputPin(TFT_SPI_PORT, TFT_SPI_DC_PIN); // DC HIGH (Data)
     tft_spi_tx(data);
 }
 
 // Send a 16-bit RGB565 Color word (MSB first)
 void tft_write_data16(uint16_t data) {
-    while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
-        ;
     LL_GPIO_SetOutputPin(TFT_SPI_PORT, TFT_SPI_DC_PIN); // DC HIGH (Data)
     tft_spi_tx(data >> 8);                              // Send High Byte
     tft_spi_tx(data & 0xFF);                            // Send Low Byte
@@ -83,10 +77,6 @@ void tft_clear_screen(uint16_t color, uint16_t x0, uint16_t y0, uint16_t x1,
 bool tft_is_ready(void) { return !dma_busy; }
 
 void tft_start_dma_stream(uint16_t *buf, uint32_t pixel_count) {
-    // Wait for SPI to be completely idle from previous window commands
-    while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
-        ;
-
     dma_busy = true;
 
     // Set D/C pin to Data
