@@ -1,3 +1,6 @@
+#ifndef FONTS_H
+#define FONTS_H
+
 const unsigned char console_font_8x8[] = {
 
     /*
@@ -3072,3 +3075,5 @@ const unsigned char console_font_8x8[] = {
     0x00, /* 00000000 */
     0x00, /* 00000000 */
 };
+
+#endif
