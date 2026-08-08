@@ -1,8 +1,10 @@
 #include "tft.h"
 #include "bsp.h"
+#include "stm32f4xx_ll_dma.h"
 #include "stm32f4xx_ll_gpio.h"
 #include "stm32f4xx_ll_spi.h"
 #include "stm32f4xx_ll_utils.h"
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -16,6 +18,8 @@
 #define CASET 0x2A
 #define RASET 0x2B
 #define RAMWR 0x2C
+
+static volatile bool dma_busy = false;
 
 // Internal helper to transmit 1 byte and wait until completely finished
 static inline void tft_spi_tx(uint8_t data) {
@@ -68,6 +72,37 @@ void tft_clear_screen(uint16_t color, uint16_t x0, uint16_t y0, uint16_t x1,
 
     for (size_t i = 0; i < (x1 - x0 + 1) * (y1 - y0 + 1); ++i)
         tft_write_data16(color);
+}
+
+bool tft_is_ready(void) { return !dma_busy; }
+
+void tft_start_dma_stream(uint16_t *buf, uint32_t pixel_count) {
+    // Wait for SPI to be completely idle from previous window commands
+    while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
+        ;
+
+    dma_busy = true;
+
+    // Set D/C pin to Data
+    LL_GPIO_SetOutputPin(TFT_SPI_PORT, TFT_SPI_DC_PIN);
+
+    // Fire dma
+    LL_DMA_DisableStream(TFT_SPI_DMA, TFT_SPI_DMA_STREAM);
+    LL_DMA_SetMemoryAddress(TFT_SPI_DMA, TFT_SPI_DMA_STREAM, (uint32_t)buf);
+    LL_DMA_SetDataLength(TFT_SPI_DMA, TFT_SPI_DMA_STREAM, pixel_count * 2);
+
+    LL_DMA_ClearFlag_TC4(TFT_SPI_DMA);
+    LL_DMA_ClearFlag_TE4(TFT_SPI_DMA);
+    LL_DMA_EnableStream(TFT_SPI_DMA, TFT_SPI_DMA_STREAM);
+}
+
+// This name MUST match exactly so the linker
+// hooks it into the interrupt vector table
+void DMA1_Stream4_IRQHandler(void) {
+    if (LL_DMA_IsActiveFlag_TC4(TFT_SPI_DMA)) {
+        LL_DMA_ClearFlag_TC4(TFT_SPI_DMA);
+        dma_busy = false;
+    }
 }
 
 void tft_reset_display(void) {

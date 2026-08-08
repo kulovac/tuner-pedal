@@ -62,9 +62,7 @@ void gfx_render_string_centered(uint16_t *buf, uint16_t box_w, uint16_t box_h,
 
 void gfx_draw(uint16_t *buf, uint16_t x0, uint16_t y0, uint16_t x1,
               uint16_t y1) {
+    log_assert(tft_is_ready(), "Called gfx_draw before display was ready!");
     tft_set_window(x0, y0, x1, y1);
-    for (size_t i = 0; i < (x1 - x0 + 1) * (y1 - y0 + 1); ++i) {
-        uint16_t color = buf[i];
-        tft_write_data16(color);
-    }
+    tft_start_dma_stream(buf, (x1 - x0 + 1) * (y1 - y0 + 1));
 }
