@@ -106,10 +106,11 @@ void tft_draw_string(uint16_t x, uint16_t y, const char *str, uint16_t fg_color,
     }
 }
 
-void tft_clear_screen(uint16_t color) {
-    tft_set_window(0, 0, TFT_WIDTH - 1, TFT_HEIGHT - 1);
+void tft_clear_screen(uint16_t color, uint16_t x0, uint16_t y0, uint16_t x1,
+                      uint16_t y1) {
+    tft_set_window(x0, y0, x1, y1);
 
-    for (size_t i = 0; i < TFT_WIDTH * TFT_HEIGHT; ++i)
+    for (size_t i = 0; i < (x1 - x0 + 1) * (y1 - y0 + 1); ++i)
         tft_write_data16(color);
 }
 

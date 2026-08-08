@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
@@ -33,7 +34,7 @@ int main(void) {
 
     float buffer[BUFFER_SIZE];
 
-    tft_clear_screen(TFT_BLACK);
+    tft_clear_screen(TFT_BLACK, 0, 0, TFT_WIDTH - 1, TFT_HEIGHT - 1);
 
     /* Loop forever */
     for (;;) {
@@ -76,18 +77,30 @@ int main(void) {
 
 static void display_tuning(float freq, float cents, const char *note) {
     static const char *prev_note = NULL;
-    char cents_str[16];
+    static int8_t prev_cents = INT8_MAX;
 
-    char cents_sign = ((int32_t)lroundf(cents * 100.0f) < 0) ? '-' : '+';
-    int32_t cents_scaled = abs((int32_t)lroundf(cents * 100.0f));
-    snprintf(cents_str, 16, "%c%ld.%02ld", cents_sign, cents_scaled / 100,
-             cents_scaled % 100);
+    int8_t rounded_cents = (int8_t)lroundf(cents);
 
     if (prev_note != note) {
-        tft_draw_string(5, 5, note, TFT_WHITE, TFT_BLACK, 4);
+        // x0 to draw middle of screen is WIDTH - chars * 4x * 8px
+        tft_clear_screen(TFT_BLACK, (TFT_WIDTH - 2 * 4 * 8) / 2,
+                         TFT_HEIGHT / 2 - 4 * 8 - 6,
+                         (TFT_WIDTH + 2 * 4 * 8) / 2, TFT_HEIGHT / 2 - 6);
+        tft_draw_string((TFT_WIDTH - strlen(note) * 4 * 8) / 2,
+                        TFT_HEIGHT / 2 - 4 * 8 - 6, note, TFT_WHITE, TFT_BLACK,
+                        4);
         prev_note = note;
     }
-    tft_draw_string(5, 50, cents_str, TFT_WHITE, TFT_BLACK, 2);
+
+    if (prev_cents != rounded_cents) {
+        char cents_str[16];
+        snprintf(cents_str, 16, "%+hd", rounded_cents);
+
+        tft_draw_string((TFT_WIDTH - strlen(cents_str) * 3 * 8) / 2,
+                        TFT_HEIGHT / 2 + 6, cents_str, TFT_WHITE, TFT_BLACK, 3);
+
+        prev_cents = rounded_cents;
+    }
 }
 
 static bool collect_sample(int32_t *val, enum CHSIDE ch) {

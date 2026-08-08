@@ -18,6 +18,7 @@
 void init_display(void);
 void tft_draw_string(uint16_t x, uint16_t y, const char *str, uint16_t fg_color,
                      uint16_t bg_color, uint8_t scale);
-void tft_clear_screen(uint16_t color);
+void tft_clear_screen(uint16_t color, uint16_t x0, uint16_t y0, uint16_t x1,
+                      uint16_t y1);
 
 #endif
