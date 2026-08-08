@@ -25,7 +25,13 @@ static volatile bool dma_busy = false;
 static inline void tft_spi_tx(uint8_t data) {
     while (!LL_SPI_IsActiveFlag_TXE(TFT_SPI))
         ;
+
     LL_SPI_TransmitData8(TFT_SPI, data);
+
+    while (!LL_SPI_IsActiveFlag_TXE(TFT_SPI))
+        ;
+    while (LL_SPI_IsActiveFlag_BSY(TFT_SPI))
+        ;
 }
 
 // Send a 1-byte Command (D/C pulled LOW)

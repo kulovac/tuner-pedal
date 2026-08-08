@@ -135,7 +135,12 @@ if(BUILD_TESTING)
   enable_testing()
   add_subdirectory(tests)
 else()
-  add_compile_definitions(LOG_LEVEL=${LOG_LEVEL})
+  # Force log level to NONE for Release builds, otherwise use the CACHE variable
+  if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_compile_definitions(LOG_LEVEL=LOG_LEVEL_NONE)
+  else()
+    add_compile_definitions(LOG_LEVEL=${LOG_LEVEL})
+  endif()
 
   if (${PROJECT_TYPE} MATCHES ${PROJECT_TYPE_EXECUTABLE})
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})

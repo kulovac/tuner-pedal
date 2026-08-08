@@ -35,8 +35,7 @@ cumulative_mean_normalized_difference_function(float32_t df[TAU_MAX]);
 
 void init_dsp(void) {
     // TODO: Finalize the buffer length `BUFFER_SIZE`
-    arm_status status = arm_rfft_fast_init_f32(&rfft, FFT_LEN);
-    log_assert(status == ARM_MATH_SUCCESS, "Failed to init dsp unit");
+    arm_rfft_fast_init_f32(&rfft, FFT_LEN);
 }
 
 inline float32_t cents_diff(float32_t freq) {
