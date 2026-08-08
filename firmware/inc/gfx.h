@@ -4,14 +4,16 @@
 #include <stdint.h>
 
 // Standard RGB565 Colors
-#define GFX_COLOR_BLACK 0x0000
-#define GFX_COLOR_WHITE 0xFFFF
-#define GFX_COLOR_RED 0xF800
-#define GFX_COLOR_GREEN 0x07E0
-#define GFX_COLOR_BLUE 0x001F
-#define GFX_COLOR_YELLOW 0xFFE0
-#define GFX_COLOR_CYAN 0x07FF
-#define GFX_COLOR_MAGENTA 0xF81F
+// XXX: stm32 is little endian but the st7735 is big endian
+// so I swap the colour bytes around as a temporary solution
+#define GFX_COLOR_BLACK __builtin_bswap16(0x0000)
+#define GFX_COLOR_WHITE __builtin_bswap16(0xFFFF)
+#define GFX_COLOR_RED __builtin_bswap16(0xF800)
+#define GFX_COLOR_GREEN __builtin_bswap16(0x07E0)
+#define GFX_COLOR_BLUE __builtin_bswap16(0x001F)
+#define GFX_COLOR_YELLOW __builtin_bswap16(0xFFE0)
+#define GFX_COLOR_CYAN __builtin_bswap16(0x07FF)
+#define GFX_COLOR_MAGENTA __builtin_bswap16(0xF81F)
 
 void gfx_render_box(uint16_t *buf, uint16_t box_w, uint16_t box_h,
                     uint16_t color);
