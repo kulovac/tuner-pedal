@@ -22,9 +22,14 @@
 #define CENT_W (8 * 3 * CENT_SCALE)
 #define CENT_H (8 * CENT_SCALE)
 
+static float buffer[BUFFER_SIZE];
+static uint16_t spi_rx[BUFFER_SIZE * 8];
+static volatile enum { TRANSFERING, HALF_TRANSFER, TRANSFER_COMPLETE } transfer;
+
 static void error_handler(void);
 static bool collect_sample(int32_t *, enum CHSIDE);
 static void display_tuning(float freq, float cents, const char *note);
+static void i2s_start_dma_stream(uint16_t *rx_buf, uint32_t total_samples);
 
 int main(void) {
     bsp_init();
@@ -40,9 +45,9 @@ int main(void) {
     log_warn("entering test %d", 4);
     log_error("entering test %d", 5);
 
-    float buffer[BUFFER_SIZE];
-
     tft_clear_screen(GFX_COLOR_BLACK, 0, 0, TFT_WIDTH - 1, TFT_HEIGHT - 1);
+
+    i2s_start_dma_stream(spi_rx, sizeof(spi_rx) / sizeof(spi_rx[0]));
 
     /* Loop forever */
     for (;;) {
@@ -81,6 +86,33 @@ int main(void) {
     }
 
     error_handler();
+}
+
+void DMA2_Stream0_IRQHandler(void) {
+    if (LL_DMA_IsActiveFlag_HT0(ADC_I2S_DMA)) {
+        LL_DMA_ClearFlag_HT0(ADC_I2S_DMA);
+        transfer = HALF_TRANSFER;
+    }
+
+    if (LL_DMA_IsActiveFlag_TC0(ADC_I2S_DMA)) {
+        LL_DMA_ClearFlag_TC0(ADC_I2S_DMA);
+        transfer = TRANSFER_COMPLETE;
+    }
+}
+
+static void i2s_start_dma_stream(uint16_t *rx_buf, uint32_t total_samples) {
+    transfer = TRANSFERING;
+
+    LL_DMA_DisableStream(ADC_I2S_DMA, ADC_I2S_DMA_STREAM);
+
+    LL_DMA_SetMemoryAddress(ADC_I2S_DMA, ADC_I2S_DMA_STREAM, (uint32_t)rx_buf);
+    LL_DMA_SetDataLength(ADC_I2S_DMA, ADC_I2S_DMA_STREAM, total_samples);
+
+    LL_DMA_ClearFlag_HT0(ADC_I2S_DMA);
+    LL_DMA_ClearFlag_TC0(ADC_I2S_DMA);
+    LL_DMA_ClearFlag_TE0(ADC_I2S_DMA);
+
+    LL_DMA_EnableStream(ADC_I2S_DMA, ADC_I2S_DMA_STREAM);
 }
 
 static void display_tuning(float freq, float cents, const char *note) {
