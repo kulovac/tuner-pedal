@@ -119,6 +119,7 @@ set(CMSIS_DSP_SOURCES
     "${cmsis_dsp_SOURCE_DIR}/Source/TransformFunctions/TransformFunctions.c"
     "${cmsis_dsp_SOURCE_DIR}/Source/SupportFunctions/SupportFunctions.c"
     "${cmsis_dsp_SOURCE_DIR}/Source/CommonTables/CommonTables.c"
+    "${cmsis_dsp_SOURCE_DIR}/Source/StatisticsFunctions/StatisticsFunctions.c"
 )
 list(APPEND PROJECT_SOURCES ${LL_SOURCES} ${SYSTEM_SOURCE} ${CMSIS_DSP_SOURCES})
 
