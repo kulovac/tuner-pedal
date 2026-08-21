@@ -64,6 +64,7 @@ set(PROJECT_SOURCES
 	src/dsp.c
 	src/tft.c
 	src/gfx.c
+	src/i2s.c
 )
 
 set(PROJECT_DEFINES
