@@ -38,12 +38,7 @@ int main(void) {
     init_display();
 
     LL_GPIO_SetOutputPin(STATUS_LED_PORT, STATUS_LED_PIN);
-
-    log_trace("entering test %d", 1);
-    log_debug("entering test %d", 2);
-    log_info("entering test %d", 3);
-    log_warn("entering test %d", 4);
-    log_error("entering test %d", 5);
+    log_trace("Finished initialization");
 
     tft_clear_screen(GFX_COLOR_BLACK, 0, 0, TFT_WIDTH - 1, TFT_HEIGHT - 1);
     i2s_start_dma(spi_rx, sizeof(spi_rx) / sizeof(spi_rx[0]));
@@ -52,7 +47,7 @@ int main(void) {
     float cents = 0.0;
     const char *note = "-";
 
-    /* Loop forever */
+    log_trace("Entering main loop");
     for (;;) {
         if (transfer == TRANSFERING) {
             display_tuning(freq, cents, note);
