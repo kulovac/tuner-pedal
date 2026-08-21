@@ -23,6 +23,7 @@
 // Size of the FFT buffer (W_LEN + TAU_MAX)
 #define FFT_LEN (2 * W_LEN)
 #define A4_FREQ 440.0f
+#define SILENCE_THRESH 1e3
 
 static arm_rfft_fast_instance_f32 rfft;
 
@@ -88,6 +89,12 @@ char *get_note(float freq) {
 
 float compute_yin(float32_t sig[BUFFER_SIZE]) {
     log_trace("Computing yin algorithm");
+
+    float32_t rms;
+    arm_rms_f32(sig, BUFFER_SIZE, &rms);
+    if (rms < SILENCE_THRESH) {
+        return 0.0f;
+    }
 
     float32_t df[TAU_MAX];
     difference_function(sig, df);
