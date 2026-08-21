@@ -115,7 +115,8 @@ static void i2s_adc_init(void) {
                               .AudioFreq = LL_I2S_AUDIOFREQ_16K,
                               .ClockPolarity = LL_I2S_POLARITY_LOW};
     LL_I2S_Init(ADC_I2S, &i2s);
-    LL_I2S_Enable(ADC_I2S);
+    // WARN: do not enable I2S due to L/R channel synchronization issues
+    // this is resolved within i2s.{c,h}
 
     i2s_dma_init();
 }
